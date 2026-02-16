@@ -1639,12 +1639,21 @@
 
         (function initExitIntent() {
             const storageKey = 'se_exit_intent_v2';
+            const sessionKey = 'se_exit_intent_seen_session_v1';
             const exitModal = document.getElementById('exit-intent');
             if (!exitModal) return;
 
             const state = JSON.parse(localStorage.getItem(storageKey) || '{}');
             if (state.converted) return;
             if (state.dismissedUntil && Date.now() < state.dismissedUntil) return;
+
+            let seenInSession = false;
+            try {
+                seenInSession = sessionStorage.getItem(sessionKey) === '1';
+            } catch (_) {
+                seenInSession = false;
+            }
+            if (seenInSession) return;
 
             const insight = exitModal.querySelector('[data-exit-insight]');
             const form = exitModal.querySelector('[data-exit-form]');
@@ -1691,9 +1700,16 @@
 
             const openExitIntent = (reason) => {
                 if (isVisible) return;
+                if (seenInSession) return;
                 if (getTimeSpent() < 7) return;
 
                 isVisible = true;
+                seenInSession = true;
+                try {
+                    sessionStorage.setItem(sessionKey, '1');
+                } catch (_) {
+                    // ignore storage errors
+                }
                 maxScroll = Math.max(maxScroll, getScrollPercent());
                 setInsightCopy();
 
