@@ -127,6 +127,20 @@ Upload to:
 
 ---
 
+## Deployment
+
+### GitHub Repository:
+**https://github.com/bojodanchev/executive-ai-landing**
+
+### Live Website:
+**https://executive-ai-landing-o81l2b0gt-bojidars-projects-2603784f.vercel.app**
+
+### Direct Links:
+- **English:** https://executive-ai-landing-o81l2b0gt-bojidars-projects-2603784f.vercel.app/
+- **Bulgarian:** https://executive-ai-landing-o81l2b0gt-bojidars-projects-2603784f.vercel.app/index-bg.html
+
+---
+
 ## Next Steps / TODO
 
 1. **Domain Setup:**
