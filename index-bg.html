@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вашият AI Изпълнителен Асистент — Настроен и Готов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #141416;
+            --accent: #c9a961;
+            --accent-glow: rgba(201, 169, 97, 0.3);
+            --text-primary: #f5f5f5;
+            --text-secondary: #888888;
+            --border: #2a2a2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(201, 169, 97, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(201, 169, 97, 0.08), transparent);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--bg-primary), transparent);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            padding: 1.25rem 2.5rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            padding: 1.25rem 2.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-number {
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .how-it-works-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .step-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 6rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing-card {
+            padding: 4rem 3rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent);
+            margin-top: 3rem;
+        }
+
+        .pricing-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            list-style: none;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--accent);
+            margin-right: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse 50% 50% at 50% 100%, rgba(201, 169, 97, 0.1), transparent);
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <nav>
+        <div class="logo">EXECUTIVE.AI</div>
+        <a href="#pricing" class="nav-cta">Започнете</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">Пълно Настройване</div>
+        <h1>Вашият <em>AI Изпълнителен Асистент</em> — Настроен и Готов за Работа</h1>
+        <p class="hero-subtitle">Настройваме личен AI агент, който работи 24/7, за да се занимава с имейлите, графика, проучванията и задачите ви — за да можете да се фокусирате върху важното.</p>
+        <div class="cta-group">
+            <a href="#pricing" class="btn-primary">Получете Вашия Асистент</a>
+            <a href="#how-it-works" class="btn-secondary">Вижте Как Работи</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-header">
+            <h2>Какво Прави Вашият Асистент</h2>
+            <p>Пълноценно настроен AI, който се интегрира с вашите инструменти</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>Управление на Имейли</h3>
+                <p>Асистентът ви чете, приоритизира, чернова отговори и се занимава с рутинната кореспонденция — поддържайки пощата ви изчистена.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>График и Календар</h3>
+                <p>Управлява календара ви, резервира срещи, изпраща напомняния и намира оптимални времена в различни часови зони.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>Проучвания и Анализи</h3>
+                <p>Следи новини, конкуренти и индустриални тенденции. Доставя ежедневни брифинги, съобразени с вашия бизнес.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <h3>Създаване на Документи</h3>
+                <p>Чернова отчети, презентации, предложения и кореспонденция във вашия стил и тон.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">05</div>
+                <h3>Автоматизация на Задачи</h3>
+                <p>Обработва повтарящи се работни процеси, въвеждане на данни и рутинни операции — напълно автоматизирано.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">06</div>
+                <h3>Наличност 24/7</h3>
+                <p>Работи денонощно. Не спи, не взима почивки, винаги готов да помогне.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <div class="section-header">
+                <h2>Как Работи</h2>
+                <p>Ние се грижим за всичко — от настройката до непрекъснатата оптимизация</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Разговор за Запознаване</h3>
+                        <p>Научаваме за вашите работни процеси, предпочитания и предизвикателства. Какви задачи ви отнемат време? Каква информация ви е нужна ежедневно? Документираме всичко.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Конфигуриране на Агента</h3>
+                        <p>Нашите инженери инсталират и конфигурират вашия личен OpenClaw агент. Интегрираме имейл, календар, CRM и специализираните ви инструменти.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Обучение и Въвеждане</h3>
+                        <p>Обучаваме асистента на вашия тон, предпочитания и работни процеси. Получавате персонализирана система, създадена около начина, по който работите.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Стартиране</h3>
+                        <p>Асистентът ви започва работа веднага. Следим представянето, събираме обратна връзка и настройваме за оптимални резултати.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Инвестиция</h2>
+            <p>Еднократна настройка. Без месечни такси за самия агент.</p>
+        </div>
+        <div class="pricing-card">
+            <div class="pricing-label">Пълно Настройване</div>
+            <div class="price">4,500 лв.</div>
+            <div class="price-note">Еднократна инвестиция • Готов за 48 часа</div>
+            <ul class="pricing-features">
+                <li>Пълно инсталиране и конфигуриране на агента</li>
+                <li>Интеграция с имейл, календар и инструменти</li>
+                <li>Персонализирана автоматизация на работни процеси</li>
+                <li>Обучение и настройка на тона на асистента</li>
+                <li>30 дни поддръжка и оптимизация</li>
+                <li>Документация и предаване</li>
+            </ul>
+            <a href="mailto:hello@executive.ai?subject=Запитване за AI Асистент" class="btn-primary">Започнете Сега</a>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Спестете 10+ Часа Всяка Седмица</h2>
+        <p>Спрете да се давите в административни задачи. Вашият AI изпълнителен асистент е готов да работи — нека го настроим за вас.</p>
+        <div class="cta-group">
+            <a href="mailto:hello@executive.ai?subject=Запитване за AI Асистент" class="btn-primary">Получете Вашия Асистент</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Executive.AI — Настройване на AI Асистенти за Бизнеса</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
