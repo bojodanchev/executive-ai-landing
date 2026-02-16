@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Empire — OpenClaw Setup (Simple)</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #141416;
+            --accent: #c9a961;
+            --accent-glow: rgba(201, 169, 97, 0.3);
+            --text-primary: #f5f5f5;
+            --text-secondary: #8e8e8e;
+            --border: #2a2a2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(201, 169, 97, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(201, 169, 97, 0.08), transparent);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.75; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--bg-primary), transparent);
+        }
+
+        .logo {
+            color: var(--accent);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .nav-cta,
+        .btn-primary,
+        .btn-secondary {
+            font-family: 'Space Mono', monospace;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta {
+            padding: 0.65rem 1rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 0.8rem;
+            background: transparent;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .lang-switch {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid rgba(201, 169, 97, 0.35);
+            color: var(--accent);
+            text-decoration: none;
+            background: linear-gradient(145deg, rgba(201, 169, 97, 0.14), rgba(20, 20, 22, 0.9));
+            box-shadow: inset 0 0 0 1px rgba(201, 169, 97, 0.12), 0 0 20px rgba(201, 169, 97, 0.12);
+        }
+
+        .lang-switch:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            color: #f3d78f;
+            box-shadow: inset 0 0 0 1px rgba(201, 169, 97, 0.2), 0 8px 24px rgba(201, 169, 97, 0.2);
+        }
+
+        .lang-switch-icon {
+            width: 19px;
+            height: 19px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 1.2rem 3.5rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            padding: 0.45rem 0.8rem;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.15;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 7vw, 4.4rem);
+            font-weight: 400;
+            max-width: 940px;
+            margin-bottom: 1.1rem;
+        }
+
+        .hero h1 em {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            max-width: 760px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 1.4rem;
+            font-size: 0.84rem;
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        .lead-capture {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            padding: 0.95rem;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 22, 0.9);
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .lead-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.65rem;
+        }
+
+        .lead-input {
+            width: 100%;
+            padding: 0.85rem 0.9rem;
+            background: rgba(10, 10, 11, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.83rem;
+        }
+
+        .lead-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.16);
+        }
+
+        .lead-actions {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .form-note,
+        .form-success {
+            font-size: 0.74rem;
+        }
+
+        .form-note {
+            color: var(--text-secondary);
+        }
+
+        .form-note a {
+            color: var(--accent);
+        }
+
+        .form-success {
+            color: #b7d89c;
+            display: none;
+        }
+
+        .form-success.is-visible {
+            display: block;
+        }
+
+        section {
+            padding: 4.6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+            margin-bottom: 0.65rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+
+        .proof-strip {
+            padding-top: 0.4rem;
+        }
+
+        .proof-grid,
+        .cards-grid,
+        .testimonials-grid,
+        .offer-grid,
+        .roles-grid {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .proof-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .cards-grid,
+        .roles-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .testimonials-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .offer-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card,
+        .proof-item,
+        .testimonial-card,
+        .offer-card,
+        .snapshot-card {
+            border: 1px solid var(--border);
+            background: linear-gradient(150deg, rgba(20, 20, 22, 0.95), rgba(10, 10, 11, 0.88));
+        }
+
+        .proof-item {
+            padding: 1rem;
+        }
+
+        .proof-item strong {
+            display: block;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-size: 0.76rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .proof-item span {
+            color: #d6d6d6;
+            font-size: 0.82rem;
+            line-height: 1.45;
+        }
+
+        .card,
+        .offer-card {
+            padding: 1.45rem;
+        }
+
+        .card h3,
+        .offer-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .card p,
+        .offer-card p {
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+        }
+
+        .kicker {
+            color: var(--accent);
+            font-size: 0.74rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .roles-grid .card h3 {
+            font-size: 1.2rem;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .snapshot-card {
+            padding: 1.5rem;
+        }
+
+        .snapshot-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .snapshot-before {
+            border-color: #3c3d41;
+        }
+
+        .snapshot-after {
+            border-color: rgba(201, 169, 97, 0.6);
+            box-shadow: 0 12px 36px rgba(201, 169, 97, 0.13);
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+
+        .testimonial-story {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        .testimonial-meta {
+            border-top: 1px solid var(--border);
+            padding-top: 0.75rem;
+            margin-top: auto;
+        }
+
+        .testimonial-name {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.73rem;
+        }
+
+        .offer-card ul {
+            margin-top: 0.85rem;
+            list-style: none;
+        }
+
+        .offer-card li {
+            border-top: 1px solid var(--border);
+            padding: 0.58rem 0;
+            color: #d2d2d2;
+            font-size: 0.82rem;
+        }
+
+        .offer-cta {
+            margin-top: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding-top: 4rem;
+            padding-bottom: 5rem;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.9rem, 5.2vw, 3rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 1rem;
+            font-size: 0.93rem;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            padding: 1.2rem;
+            font-size: 0.74rem;
+        }
+
+        .exit-intent {
+            position: fixed;
+            inset: 0;
+            display: none;
+            z-index: 260;
+        }
+
+        .exit-intent.is-visible {
+            display: grid;
+            place-items: center;
+        }
+
+        .exit-intent-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(4, 4, 5, 0.78);
+        }
+
+        .exit-intent-card {
+            position: relative;
+            width: min(540px, calc(100vw - 1.2rem));
+            border: 1px solid rgba(201, 169, 97, 0.45);
+            background: linear-gradient(165deg, rgba(24, 24, 27, 0.98), rgba(10, 10, 11, 0.97));
+            padding: 1.3rem 1rem 1rem;
+            z-index: 1;
+        }
+
+        .exit-intent-close {
+            position: absolute;
+            top: 0.4rem;
+            right: 0.5rem;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .exit-intent-kicker {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.7rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .exit-intent h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .exit-intent-insight {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .exit-intent-label,
+        .exit-focus-label {
+            color: #dadada;
+            font-size: 0.72rem;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .exit-intent-input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 0.7rem;
+            border: 1px solid var(--border);
+            background: rgba(10, 10, 11, 0.85);
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .exit-intent-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.18);
+        }
+
+        .exit-pill-group {
+            display: flex;
+            gap: 0.45rem;
+            margin-bottom: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .exit-pill {
+            border: 1px solid var(--border);
+            background: transparent;
+            color: #d8d8d8;
+            padding: 0.45rem 0.58rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            cursor: pointer;
+        }
+
+        .exit-pill.is-active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(201, 169, 97, 0.08);
+        }
+
+        .exit-intent-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .exit-intent-actions .btn-primary,
+        .exit-intent-actions .btn-secondary {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .exit-intent-note {
+            margin-top: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            text-align: center;
+        }
+
+        body.exit-intent-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 980px) {
+            .proof-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.9rem 0.8rem;
+            }
+
+            .logo {
+                font-size: 0.8rem;
+                letter-spacing: 0.08em;
+            }
+
+            .nav-actions {
+                gap: 0.45rem;
+            }
+
+            .nav-cta {
+                padding: 0.55rem 0.66rem;
+                font-size: 0.66rem;
+            }
+
+            .lang-switch {
+                width: 38px;
+                height: 38px;
+            }
+
+            .hero {
+                padding-top: 5.8rem;
+                padding-bottom: 2.2rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 9.2vw, 2.7rem);
+                margin-bottom: 0.75rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.88rem;
+                margin-bottom: 1rem;
+            }
+
+            .lead-fields,
+            .cards-grid,
+            .roles-grid,
+            .snapshot-grid,
+            .offer-grid,
+            .proof-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-capture {
+                padding: 0.75rem;
+            }
+
+            .cta-group,
+            .lead-actions,
+            .exit-intent-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary,
+            .lead-actions .btn-primary,
+            .lead-actions .btn-secondary,
+            .exit-intent-actions .btn-primary,
+            .exit-intent-actions .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 3.2rem 0;
+            }
+
+            .card,
+            .offer-card,
+            .snapshot-card,
+            .testimonial-card,
+            .proof-item {
+                padding: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p,
+            .card p,
+            .offer-card p {
+                font-size: 0.82rem;
+            }
+
+            .exit-intent-card {
+                width: calc(100vw - 0.9rem);
+                max-height: calc(100vh - 1rem);
+                overflow-y: auto;
+                padding: 1rem 0.8rem 0.85rem;
+            }
+
+            .exit-intent h3 {
+                font-size: 1.25rem;
+                margin-right: 1.8rem;
+            }
+
+            .exit-pill {
+                flex: 1 1 30%;
+                min-width: 90px;
+            }
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <nav>
+        <div class="logo">SOCIAL EMPIRE</div>
+        <div class="nav-actions">
+            <a href="index-en.html" class="lang-switch" aria-label="Switch to English" title="English" data-language-target="en" data-language-switch-source="simple_nav">
+                <svg class="lang-switch-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M3.5 12h17" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M12 3c2.3 2.1 3.7 5.4 3.7 9s-1.4 6.9-3.7 9" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M12 3c-2.3 2.1-3.7 5.4-3.7 9s1.4 6.9 3.7 9" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+            </a>
+            <a href="#offer" class="nav-cta" data-track="simple_nav_offer_click">Бърз Старт</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" data-scroll-section="hero">
+            <div class="hero-badge">ELI5 версия за заети собственици</div>
+            <h1>AI <em>личен асистент</em>, който поема рутината вместо вас</h1>
+            <p class="hero-subtitle">Ние инсталираме OpenClaw, свързваме го с имейл, календар и задачи, и го обучаваме по вашия стил. Вашият екип получава ясно какво да направи и кога.</p>
+            <div class="cta-group">
+                <a href="#offer" class="btn-primary" data-track="simple_hero_offer_click">Вземете прост 3-стъпков план</a>
+                <a href="#how" class="btn-secondary" data-track="simple_hero_how_click">Как работи</a>
+            </div>
+            <form class="lead-capture" data-lead-form="hero" data-lead-channel="simple-hero" novalidate>
+                <div class="lead-fields">
+                    <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                    <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+                </div>
+                <div class="lead-actions">
+                    <button type="submit" class="btn-primary">Изпратете ми плана</button>
+                    <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="simple_hero" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете 20-мин разговор</button>
+                </div>
+                <p class="form-note">Или пишете на <a href="mailto:hello@socialempire.bg?subject=OpenClaw%20Simple%20Запитване" data-fallback-mailto="simple_hero">hello@socialempire.bg</a>.</p>
+                <p class="form-success" data-form-success>Супер. Получихме данните и отваряме календара.</p>
+            </form>
+        </section>
+
+        <section class="proof-strip" data-scroll-section="proof">
+            <div class="container">
+                <div class="proof-grid">
+                    <article class="proof-item">
+                        <strong>Старт до 14 дни</strong>
+                        <span>Не чакаме месеци. Пускаме първите работни потоци бързо.</span>
+                    </article>
+                    <article class="proof-item">
+                        <strong>Работи 24/7</strong>
+                        <span>Асистентът не забравя follow-up, срокове и важни заявки.</span>
+                    </article>
+                    <article class="proof-item">
+                        <strong>Ваши правила</strong>
+                        <span>OpenClaw действа по одобрени от вас сценарии и граници.</span>
+                    </article>
+                    <article class="proof-item">
+                        <strong>По-евтино с ~3,000 EUR</strong>
+                        <span>Обичайно е с около 3,000 EUR по-евтино да инсталирате OpenClaw асистент, отколкото да поддържате Изпълнителен асистент, Оперативен координатор и Специалист клиентско обслужване за същия обем работа.</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section data-scroll-section="daily">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Как помага всеки ден</h2>
+                    <p>Просто казано: по-малко хаос, по-бързи решения, повече изпълнение.</p>
+                </div>
+                <div class="cards-grid">
+                    <article class="card">
+                        <p class="kicker">01</p>
+                        <h3>Имейлите</h3>
+                        <p>Сортира важните писма, предлага готови отговори и напомня какво чака действие.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">02</p>
+                        <h3>Календарът</h3>
+                        <p>Подрежда срещите, проверява конфликтите и подготвя кратки бележки преди всяка среща.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">03</p>
+                        <h3>Операциите</h3>
+                        <p>Следи задачите, праща статут и ескалира, когато нещо изостава.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">04</p>
+                        <h3>Разходът</h3>
+                        <p>В повечето случаи е с около 3,000 EUR по-евтино спрямо поддържане на три пълни щатни роли за същия тип оперативен обем.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section data-scroll-section="snapshot">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Преди и След</h2>
+                    <p>Ясна промяна, която се вижда още първите седмици.</p>
+                </div>
+                <div class="snapshot-grid">
+                    <article class="snapshot-card snapshot-before">
+                        <h3>Преди</h3>
+                        <p>Имате много чатове, имейли и задачи. Неща се губят. Вие сте в постоянен реактивен режим.</p>
+                    </article>
+                    <article class="snapshot-card snapshot-after">
+                        <h3>След</h3>
+                        <p>OpenClaw подрежда комуникацията, следи задачите и ви дава кратък списък с най-важното за деня.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section data-scroll-section="roles">
+            <div class="container">
+                <div class="section-header">
+                    <h2>3 роли, които поема като обем</h2>
+                    <p>Същият тип работа, но с автоматизиран личен AI оператор.</p>
+                </div>
+                <div class="roles-grid">
+                    <article class="card">
+                        <p class="kicker">ROLE 01</p>
+                        <h3>Изпълнителен асистент</h3>
+                        <p>Имейли, календар, напомняния и подготовка за срещи.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">ROLE 02</p>
+                        <h3>Оперативен координатор</h3>
+                        <p>Статуси, follow-up и синхрон между екипи и инструменти.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">ROLE 03</p>
+                        <h3>Специалист клиентско обслужване</h3>
+                        <p>По-бързи първи отговори, подредени заявки и по-малко пропуски.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">PLUS</p>
+                        <h3>Един слой, не три отделни човека</h3>
+                        <p>Екипът ви работи с единна логика и ясни правила, без предаване на задачи между няколко роли.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how" data-scroll-section="how">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Как го пускаме</h2>
+                    <p>Всичко е просто и подредено в три стъпки.</p>
+                </div>
+                <div class="cards-grid">
+                    <article class="card">
+                        <p class="kicker">СТЪПКА 1</p>
+                        <h3>Кратък одит</h3>
+                        <p>Показвате къде губите време: имейл, календар, операции.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">СТЪПКА 2</p>
+                        <h3>Внедряване</h3>
+                        <p>Свързваме инструментите и настройваме работните потоци.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">СТЪПКА 3</p>
+                        <h3>Go-live</h3>
+                        <p>Екипът започва да работи с асистента и оптимизираме по реални резултати.</p>
+                    </article>
+                    <article class="card">
+                        <p class="kicker">РЕЗУЛТАТ</p>
+                        <h3>По-бърз бизнес ритъм</h3>
+                        <p>По-малко ръчни действия и повече време за решения, продажби и растеж.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section data-scroll-section="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Какво казват клиентите</h2>
+                    <p>Първо лице, реални истории.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card">
+                        <p class="testimonial-quote">„Вече не започвам деня в хаос.“</p>
+                        <p class="testimonial-story">Аз държах целия inbox сам и все изпусках важни нишки. След внедряването OpenClaw ми подрежда писмата и срещите и пестя поне 2 часа дневно.</p>
+                        <div class="testimonial-meta">
+                            <p class="testimonial-name">Николай Петров</p>
+                            <p class="testimonial-role">Собственик, eCommerce бранд, София</p>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <p class="testimonial-quote">„Най-накрая работя по важното, не по дребното.“</p>
+                        <p class="testimonial-story">Аз ползвам OpenClaw за дневни статуси и follow-up. Екипът ми получава ясни задачи и седмичните срещи станаха по-кратки и полезни.</p>
+                        <div class="testimonial-meta">
+                            <p class="testimonial-name">Десислава Иванова</p>
+                            <p class="testimonial-role">Оперативен директор, Пловдив</p>
+                        </div>
+                    </article>
+                    <article class="testimonial-card">
+                        <p class="testimonial-quote">„Отговаряме по-бързо и губим по-малко клиенти.“</p>
+                        <p class="testimonial-story">Аз исках стабилен процес за клиентските запитвания. OpenClaw ни даде шаблони, приоритети и автоматични напомняния и пропуските паднаха осезаемо.</p>
+                        <div class="testimonial-meta">
+                            <p class="testimonial-name">Георги Стоянов</p>
+                            <p class="testimonial-role">Основател, маркетинг агенция, Варна</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="offer" data-scroll-section="offer">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Как стартираме заедно</h2>
+                    <p>Няма публична фиксирана цена. Обхватът се определя след одит и често излиза с около 3,000 EUR по-евтино от три щатни роли за същия тип оперативна работа.</p>
+                </div>
+                <div class="offer-grid">
+                    <article class="offer-card">
+                        <p class="kicker">DFY OpenClaw Deployment</p>
+                        <h3>Стратегическо Внедряване</h3>
+                        <p>Бърз старт и внедряване на основните процеси.</p>
+                        <ul>
+                            <li>Оперативен одит и план</li>
+                            <li>Свързване на ключови канали</li>
+                            <li>Първи работни потоци</li>
+                            <li>Ясни мерки за успех за първите 14 дни</li>
+                        </ul>
+                        <div class="offer-cta">
+                            <button type="button" class="btn-primary" data-calendar-link data-calendar-link-source="simple_offer_deploy" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете разговор за внедряване</button>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <p class="kicker">Scale & Optimization</p>
+                        <h3>Партньорска Оптимизация</h3>
+                        <p>Надграждане за по-голям обем и по-сложни процеси.</p>
+                        <ul>
+                            <li>Разширена архитектура и защита на системата</li>
+                            <li>Многоканални автоматизации</li>
+                            <li>Шаблони и ясни стъпка-по-стъпка процедури</li>
+                            <li>30 дни оптимизация с екипа</li>
+                        </ul>
+                        <div class="offer-cta">
+                            <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="simple_offer_scale" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Прегледайте пълния обхват</button>
+                        </div>
+                    </article>
+                </div>
+
+                <form class="lead-capture" data-lead-form="offer" data-lead-channel="simple-offer" novalidate>
+                    <div class="lead-fields">
+                        <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                        <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+                    </div>
+                    <div class="lead-actions">
+                        <button type="submit" class="btn-primary">Изпратете ми оферта</button>
+                        <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="simple_offer_form" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете стратегически разговор</button>
+                    </div>
+                    <p class="form-note">Fallback: <a href="mailto:hello@socialempire.bg?subject=OpenClaw%20Simple%20Оферта" data-fallback-mailto="simple_offer">hello@socialempire.bg</a></p>
+                    <p class="form-success" data-form-success>Получихме заявката. Отваряме календара.</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="cta-section" data-scroll-section="final">
+            <div class="container">
+                <h2>Искате по-малко хаос още този месец?</h2>
+                <p>Вземете OpenClaw внедряване, което обичайно е с около 3,000 EUR по-евтино спрямо поддържане на три пълни щатни роли за същата оперативна тежест.</p>
+                <form class="lead-capture" data-lead-form="final" data-lead-channel="simple-final" novalidate>
+                    <div class="lead-fields">
+                        <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                        <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+                    </div>
+                    <div class="lead-actions">
+                        <button type="submit" class="btn-primary">Заявете OpenClaw настройка</button>
+                        <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="simple_final" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете 20-мин одит</button>
+                    </div>
+                    <p class="form-note">Ще получите кратък план до 24 часа.</p>
+                    <p class="form-success" data-form-success>Благодарим. Получихме данните.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <section class="exit-intent" id="exit-intent" aria-hidden="true" data-exit-intent="true">
+        <div class="exit-intent-backdrop" data-exit-close></div>
+        <div class="exit-intent-card" role="dialog" aria-modal="true" aria-labelledby="exit-intent-title-bg-simple">
+            <button class="exit-intent-close" type="button" data-exit-close aria-label="Затвори">×</button>
+            <p class="exit-intent-kicker">Преди да излезете</p>
+            <h3 id="exit-intent-title-bg-simple">Вземете кратък OpenClaw план за вашия екип</h3>
+            <p class="exit-intent-insight" data-exit-insight>10 секунди и ще получите следващите най-важни 3 стъпки.</p>
+            <form class="exit-intent-form" data-exit-form="lead" data-lead-channel="simple-exit" novalidate>
+                <label class="exit-intent-label" for="exit-email-bg-simple">Работен имейл</label>
+                <input id="exit-email-bg-simple" class="exit-intent-input" type="email" name="email" data-exit-email placeholder="you@company.com" required>
+                <p class="exit-focus-label">Къде е най-големият блокер?</p>
+                <div class="exit-pill-group">
+                    <button type="button" class="exit-pill is-active" data-focus="Имейли">Имейли</button>
+                    <button type="button" class="exit-pill" data-focus="Календар">Календар</button>
+                    <button type="button" class="exit-pill" data-focus="Операции">Операции</button>
+                </div>
+                <input type="hidden" name="focus" value="Имейли" data-exit-focus>
+                <input type="hidden" name="reason" value="" data-exit-reason>
+                <input type="hidden" name="scroll" value="" data-exit-scroll>
+                <input type="hidden" name="seconds" value="" data-exit-seconds>
+                <div class="exit-intent-actions">
+                    <button type="submit" class="btn-primary">Изпратете ми плана</button>
+                    <button type="button" class="btn-secondary" data-exit-dismiss>Не, благодаря</button>
+                </div>
+                <p class="exit-intent-note">Без спам • Само конкретни стъпки</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Social Empire — OpenClaw внедряване за бизнеса</p>
+    </footer>
+
+    <script>
+        const CALENDAR_URL = 'https://cal.com/socialempire/openclaw-audit';
+        const VARIANT = 'simple-v1-bg';
+
+        const trackEvent = (eventName, data = {}) => {
+            const payload = {
+                event: eventName,
+                variant: VARIANT,
+                lang: document.documentElement.lang,
+                ts: new Date().toISOString(),
+                ...data
+            };
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(payload);
+
+            fetch('/api/analytics', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        };
+
+        const postLead = async (path, payload) => {
+            try {
+                await fetch(path, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (_) {
+                // no-op fallback
+            }
+        };
+
+        const openCalendar = (source, url) => {
+            trackEvent('calendar_booking_click', { source });
+            const calendarUrl = url || CALENDAR_URL;
+            const newTab = window.open(calendarUrl, '_blank', 'noopener,noreferrer');
+            if (!newTab) {
+                window.location.href = calendarUrl;
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (event) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('[data-track]').forEach((element) => {
+            element.addEventListener('click', () => {
+                trackEvent(element.getAttribute('data-track'));
+            });
+        });
+
+        document.querySelectorAll('.lang-switch[data-language-target]').forEach((link) => {
+            link.addEventListener('click', () => {
+                trackEvent('language_switch', {
+                    source: link.dataset.languageSwitchSource || 'nav',
+                    target: link.dataset.languageTarget
+                });
+            });
+        });
+
+        document.querySelectorAll('[data-calendar-link]').forEach((button) => {
+            button.addEventListener('click', () => {
+                openCalendar(button.dataset.calendarLinkSource || 'unknown', button.dataset.calendarUrl || CALENDAR_URL);
+            });
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.card, .proof-item, .testimonial-card, .offer-card, .snapshot-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(18px)';
+            card.style.transition = `all 0.5s ease ${index * 0.03}s`;
+            revealObserver.observe(card);
+        });
+
+        document.querySelectorAll('[data-lead-form]').forEach((form) => {
+            const formName = form.dataset.leadForm || 'unknown';
+            const formChannel = form.dataset.leadChannel || formName;
+            const nameInput = form.querySelector('[data-lead-field="name"]');
+            const emailInput = form.querySelector('[data-lead-field="email"]');
+            const successNote = form.querySelector('[data-form-success]');
+            let started = false;
+
+            [nameInput, emailInput].forEach((input) => {
+                if (!input) return;
+                input.addEventListener('focus', () => {
+                    if (started) return;
+                    started = true;
+                    trackEvent('form_start', { form: formName, channel: formChannel });
+                });
+            });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const name = (nameInput?.value || '').trim();
+                const email = (emailInput?.value || '').trim();
+                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                if (!name || !emailOk) {
+                    trackEvent('form_submit_error', { form: formName, channel: formChannel, reason: 'validation' });
+                    if (!name && nameInput) {
+                        nameInput.focus();
+                        return;
+                    }
+                    if (emailInput) {
+                        emailInput.focus();
+                        emailInput.style.borderColor = '#d25f5f';
+                    }
+                    return;
+                }
+
+                if (emailInput) emailInput.style.borderColor = '';
+
+                const payload = {
+                    form: formName,
+                    channel: formChannel,
+                    name,
+                    email,
+                    page: window.location.pathname,
+                    variant: VARIANT
+                };
+
+                trackEvent('form_submit_success', { form: formName, channel: formChannel });
+                await postLead('/api/leads/mini-form', payload);
+
+                if (successNote) {
+                    successNote.classList.add('is-visible');
+                }
+
+                openCalendar(`${formChannel}_submit`, CALENDAR_URL);
+            });
+        });
+
+        (function initExitIntent() {
+            const storageKey = 'se_exit_intent_v2';
+            const sessionKey = 'se_exit_intent_seen_session_v1';
+            const exitModal = document.getElementById('exit-intent');
+            if (!exitModal) return;
+
+            const state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            if (state.converted) return;
+            if (state.dismissedUntil && Date.now() < state.dismissedUntil) return;
+
+            let seenInSession = false;
+            try {
+                seenInSession = sessionStorage.getItem(sessionKey) === '1';
+            } catch (_) {
+                seenInSession = false;
+            }
+            if (seenInSession) return;
+
+            const insight = exitModal.querySelector('[data-exit-insight]');
+            const form = exitModal.querySelector('[data-exit-form]');
+            const emailInput = exitModal.querySelector('[data-exit-email]');
+            const focusInput = exitModal.querySelector('[data-exit-focus]');
+            const reasonInput = exitModal.querySelector('[data-exit-reason]');
+            const scrollInput = exitModal.querySelector('[data-exit-scroll]');
+            const secondsInput = exitModal.querySelector('[data-exit-seconds]');
+            const closeTriggers = exitModal.querySelectorAll('[data-exit-close]');
+            const dismissBtn = exitModal.querySelector('[data-exit-dismiss]');
+            const focusButtons = exitModal.querySelectorAll('.exit-pill');
+
+            let isVisible = false;
+            let viewedTracked = false;
+            let maxScroll = 0;
+            let lastScrollY = window.scrollY;
+            let upwardSignals = 0;
+            const startedAt = Date.now();
+
+            const getTimeSpent = () => Math.round((Date.now() - startedAt) / 1000);
+            const getScrollPercent = () => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                if (max <= 0) return 0;
+                return Math.min(100, Math.round((scrollTop / max) * 100));
+            };
+
+            const rememberState = (partialState) => {
+                const newState = { ...state, ...partialState };
+                localStorage.setItem(storageKey, JSON.stringify(newState));
+            };
+
+            const setInsightCopy = () => {
+                if (maxScroll >= 65) {
+                    insight.textContent = `Разгледахте ${maxScroll}% от страницата. Ще ви изпратим кратък 3-стъпков план.`;
+                    return;
+                }
+                if (getTimeSpent() >= 40) {
+                    insight.textContent = 'Виждаме, че разглеждате детайлно. Получавате конкретни следващи стъпки по имейл.';
+                    return;
+                }
+                insight.textContent = 'Вземете кратък план за внедряване без излишен шум.';
+            };
+
+            const openExitIntent = (reason) => {
+                if (isVisible || seenInSession || getTimeSpent() < 7) return;
+
+                isVisible = true;
+                seenInSession = true;
+                try {
+                    sessionStorage.setItem(sessionKey, '1');
+                } catch (_) {
+                    // ignore
+                }
+
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+                setInsightCopy();
+
+                reasonInput.value = reason;
+                scrollInput.value = String(maxScroll);
+                secondsInput.value = String(getTimeSpent());
+
+                exitModal.classList.add('is-visible');
+                exitModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('exit-intent-open');
+
+                if (!viewedTracked) {
+                    viewedTracked = true;
+                    trackEvent('exit_intent_view', {
+                        reason,
+                        scroll: maxScroll,
+                        seconds: getTimeSpent()
+                    });
+                }
+
+                setTimeout(() => {
+                    emailInput.focus();
+                }, 120);
+            };
+
+            const closeExitIntent = (persistDismiss) => {
+                if (!isVisible) return;
+                isVisible = false;
+                exitModal.classList.remove('is-visible');
+                exitModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('exit-intent-open');
+
+                if (persistDismiss) {
+                    rememberState({ dismissedUntil: Date.now() + 2 * 24 * 60 * 60 * 1000 });
+                }
+            };
+
+            closeTriggers.forEach((element) => {
+                element.addEventListener('click', () => closeExitIntent(false));
+            });
+
+            dismissBtn.addEventListener('click', () => closeExitIntent(true));
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeExitIntent(false);
+            });
+
+            focusButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    focusButtons.forEach((item) => item.classList.remove('is-active'));
+                    button.classList.add('is-active');
+                    focusInput.value = button.getAttribute('data-focus') || 'Имейли';
+                });
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                if (event.clientY <= 12 && !event.relatedTarget) {
+                    openExitIntent('cursor_top');
+                }
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    openExitIntent('tab_hidden');
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+
+                const strongUpMove = lastScrollY - currentScroll > 90;
+                const nearTop = currentScroll < 220;
+                if (strongUpMove && nearTop && getTimeSpent() > 10) {
+                    upwardSignals += 1;
+                    if (upwardSignals >= 2) {
+                        openExitIntent('mobile_up_scroll');
+                    }
+                }
+
+                lastScrollY = currentScroll;
+            }, { passive: true });
+
+            setTimeout(() => {
+                openExitIntent('timed_offer');
+            }, 45000);
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const email = emailInput.value.trim();
+                const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                if (!emailIsValid) {
+                    emailInput.focus();
+                    emailInput.style.borderColor = '#d25f5f';
+                    trackEvent('exit_intent_submit_error', { reason: 'validation' });
+                    return;
+                }
+
+                emailInput.style.borderColor = '';
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+                const seconds = getTimeSpent();
+
+                trackEvent('exit_intent_submit', {
+                    focus: focusInput.value || 'Имейли',
+                    reason: reasonInput.value || 'unknown',
+                    scroll: maxScroll,
+                    seconds
+                });
+
+                await postLead('/api/leads/exit-intent', {
+                    email,
+                    focus: focusInput.value || 'Имейли',
+                    reason: reasonInput.value || 'unknown',
+                    scroll: maxScroll,
+                    seconds,
+                    variant: VARIANT
+                });
+
+                rememberState({ converted: true, leadEmail: email, convertedAt: Date.now() });
+                closeExitIntent(false);
+                openCalendar('exit_intent_submit', CALENDAR_URL);
+            });
+        })();
+    </script>
+</body>
+</html>
