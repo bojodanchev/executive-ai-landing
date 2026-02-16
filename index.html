@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Empire — Вашият AI Изпълнителен Асистент</title>
+    <title>Social Empire — OpenClaw внедряване за бизнес</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,6 +242,100 @@
             color: var(--accent);
         }
 
+        .lead-capture {
+            width: min(760px, 100%);
+            margin: 1.4rem auto 0;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            background: rgba(20, 20, 22, 0.88);
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .lead-capture-wide {
+            width: min(920px, 100%);
+        }
+
+        .lead-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .lead-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(10, 10, 11, 0.75);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.86rem;
+        }
+
+        .lead-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.16);
+        }
+
+        .lead-actions {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .form-note {
+            font-size: 0.74rem;
+            color: var(--text-secondary);
+        }
+
+        .form-note a {
+            color: var(--accent);
+        }
+
+        .form-success {
+            color: #b7d89c;
+            font-size: 0.78rem;
+            display: none;
+        }
+
+        .form-success.is-visible {
+            display: block;
+        }
+
+        .proof-strip {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 2.4rem;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .proof-item {
+            padding: 1.1rem 1rem;
+            border: 1px solid var(--border);
+            background: linear-gradient(150deg, rgba(20, 20, 22, 0.95), rgba(10, 10, 11, 0.85));
+        }
+
+        .proof-item strong {
+            display: block;
+            color: var(--accent);
+            font-size: 0.78rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .proof-item span {
+            color: #d7d7d7;
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
         /* Features Section */
         .features {
             padding: 6rem 2rem;
@@ -406,16 +500,29 @@
         /* Pricing */
         .pricing {
             padding: 6rem 2rem;
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
 
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.2rem;
+            margin-top: 2.4rem;
+        }
+
         .pricing-card {
-            padding: 4rem 3rem;
+            padding: 2.3rem 1.6rem 1.8rem;
             background: var(--bg-secondary);
             border: 1px solid var(--accent);
-            margin-top: 3rem;
+            margin-top: 0;
+            text-align: left;
+        }
+
+        .pricing-card-primary {
+            border-color: var(--accent);
+            box-shadow: 0 12px 38px rgba(201, 169, 97, 0.12);
         }
 
         .pricing-label {
@@ -427,7 +534,7 @@
 
         .price {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 3.1rem;
             margin-bottom: 0.5rem;
         }
 
@@ -439,8 +546,8 @@
 
         .pricing-features {
             text-align: left;
-            max-width: 400px;
-            margin: 0 auto 2rem;
+            max-width: 100%;
+            margin: 0 0 1.4rem;
             list-style: none;
         }
 
@@ -454,6 +561,43 @@
             content: "✓";
             color: var(--accent);
             margin-right: 1rem;
+        }
+
+        .snapshot {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .snapshot-card {
+            border: 1px solid var(--border);
+            padding: 1.6rem 1.3rem;
+            background: rgba(20, 20, 22, 0.9);
+        }
+
+        .snapshot-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .snapshot-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .snapshot-before h3 {
+            color: #c89090;
+        }
+
+        .snapshot-after h3 {
+            color: #9ec78d;
         }
 
         /* CTA Section */
@@ -721,18 +865,49 @@
                 max-width: 42ch;
             }
 
+            .lead-capture {
+                margin-top: 1rem;
+                padding: 0.9rem 0.8rem;
+            }
+
+            .lead-fields {
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }
+
+            .lead-actions {
+                flex-direction: column;
+                gap: 0.55rem;
+            }
+
+            .lead-actions .btn-primary,
+            .lead-actions .btn-secondary {
+                width: 100%;
+            }
+
             .features,
             .how-it-works,
             .testimonials,
+            .snapshot,
             .pricing,
             .cta-section {
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
 
+            .proof-strip {
+                padding: 0 1rem 1.8rem;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }
+
             .features,
             .how-it-works,
             .testimonials,
+            .snapshot,
             .pricing {
                 padding-top: 4rem;
                 padding-bottom: 4rem;
@@ -808,6 +983,12 @@
                 margin-top: 1.8rem;
             }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+                margin-top: 1.4rem;
+            }
+
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 0.9rem;
@@ -842,6 +1023,19 @@
             .pricing-features li {
                 font-size: 0.82rem;
                 line-height: 1.45;
+            }
+
+            .snapshot-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .snapshot-card {
+                padding: 1.15rem 0.95rem;
+            }
+
+            .snapshot-card p {
+                font-size: 0.84rem;
             }
 
             .cta-group {
@@ -925,7 +1119,7 @@
     <nav>
         <div class="logo">SOCIAL EMPIRE</div>
         <div class="nav-actions">
-            <a href="index-en.html" class="lang-switch" aria-label="Switch to English" title="English">
+            <a href="index-en.html" class="lang-switch" aria-label="Switch to English" title="English" data-language-target="en" data-language-switch-source="nav">
                 <svg class="lang-switch-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
                     <path d="M3.5 12h17" stroke="currentColor" stroke-width="1.6"/>
@@ -933,107 +1127,212 @@
                     <path d="M12 3c-2.3 2.1-3.7 5.4-3.7 9s1.4 6.9 3.7 9" stroke="currentColor" stroke-width="1.6"/>
                 </svg>
             </a>
-            <a href="#pricing" class="nav-cta">Започнете</a>
+            <a href="#offer" class="nav-cta" data-track="nav_offer_click">Quickstart</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-badge">Пълно Настройване</div>
-        <h1>Вашият <em>AI Изпълнителен Асистент</em> — Настроен и Готов за Работа</h1>
-        <p class="hero-subtitle">Настройваме личен AI агент, който работи 24/7, за да се занимава с имейлите, графика, проучванията и задачите ви — за да можете да се фокусирате върху важното.</p>
+    <section class="hero" data-scroll-section="hero">
+        <div class="hero-badge">OpenClaw напълно обслужван агент</div>
+        <h1>Вашият <em>OpenClaw оператор</em> — инсталиран, обучен и готов да действа</h1>
+        <p class="hero-subtitle">Внедряваме OpenClaw като ваш 24/7 оперативен AI слой в чат каналите, имейла, календара и вътрешните системи, за да свалите рутината и да вдигнете скоростта на изпълнение.</p>
         <div class="cta-group">
-            <a href="#pricing" class="btn-primary">Получете Вашия Асистент</a>
-            <a href="#how-it-works" class="btn-secondary">Вижте Как Работи</a>
+            <a href="#offer" class="btn-primary" data-track="hero_offer_click">Запазете 250 EUR Quickstart</a>
+            <a href="#deploy" class="btn-secondary" data-track="hero_deploy_click">Вижте Обхвата</a>
+        </div>
+        <form class="lead-capture" data-lead-form="hero" data-lead-channel="hero" novalidate>
+            <div class="lead-fields">
+                <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+            </div>
+            <div class="lead-actions">
+                <button type="submit" class="btn-primary">Изпратете 3-стъпков план</button>
+                <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="hero" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете 20-мин одит</button>
+            </div>
+            <p class="form-note">Предпочитате имейл? <a href="mailto:hello@socialempire.bg?subject=OpenClaw%20DFY%20Запитване" data-fallback-mailto="hero">Пишете ни директно</a>.</p>
+            <p class="form-success" data-form-success>Благодарим. Получихме заявката и отваряме календара.</p>
+        </form>
+    </section>
+
+    <section class="proof-strip" data-scroll-section="proof">
+        <div class="proof-grid">
+            <div class="proof-item">
+                <strong>24+ Български Екипа</strong>
+                <span>Реални внедрявания за бизнес процеси, не демо AI чатове.</span>
+            </div>
+            <div class="proof-item">
+                <strong>GDPR & EU Хостинг</strong>
+                <span>Подход за контрол и съответствие при чувствителни работни потоци.</span>
+            </div>
+            <div class="proof-item">
+                <strong>Собствен Оперативен Слой</strong>
+                <span>Данните и логиката остават във вашия бизнес контекст.</span>
+            </div>
+            <div class="proof-item">
+                <strong>48h Старт</strong>
+                <span>Quickstart внедряване с KPI базова линия още първата седмица.</span>
+            </div>
         </div>
     </section>
 
-    <section class="features">
+    <section class="features" id="outcomes" data-scroll-section="outcomes">
         <div class="section-header">
-            <h2>Какво Прави Вашият Асистент</h2>
-            <p>Пълноценно настроен AI, който се интегрира с вашите инструменти</p>
+            <h2>Бизнес Резултати до 14 Дни</h2>
+            <p>Продаваме резултат: повече изпълнение, по-малко оперативен шум</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-number">01</div>
-                <h3>Управление на Имейли</h3>
-                <p>Асистентът ви чете, приоритизира, чернова отговори и се занимава с рутинната кореспонденция — поддържайки пощата ви изчистена.</p>
+                <div class="feature-number">KPI 01</div>
+                <h3>Скорост на Отговор</h3>
+                <p>Критичните нишки се обработват значително по-бързо чрез структурирани отговори и ескалации.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-number">02</div>
-                <h3>График и Календар</h3>
-                <p>Управлява календара ви, резервира срещи, изпраща напомняния и намира оптимални времена в различни часови зони.</p>
+                <div class="feature-number">KPI 02</div>
+                <h3>Контрол върху Календара</h3>
+                <p>От бриф до предложение за среща за минути, с автоматизирани контекстни бележки.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-number">03</div>
-                <h3>Проучвания и Анализи</h3>
-                <p>Следи новини, конкуренти и индустриални тенденции. Доставя ежедневни брифинги, съобразени с вашия бизнес.</p>
+                <div class="feature-number">KPI 03</div>
+                <h3>Дисциплина при Follow-up</h3>
+                <p>Системни напомняния и обобщения без ръчни проверки и пропуснати задачи.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-number">04</div>
-                <h3>Създаване на Документи</h3>
-                <p>Чернова отчети, презентации, предложения и кореспонденция във вашия стил и тон.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-number">05</div>
-                <h3>Автоматизация на Задачи</h3>
-                <p>Обработва повтарящи се работни процеси, въвеждане на данни и рутинни операции — напълно автоматизирано.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-number">06</div>
-                <h3>Наличност 24/7</h3>
-                <p>Работи денонощно. Не спи, не взима почивки, винаги готов да помогне.</p>
+                <div class="feature-number">KPI 04</div>
+                <h3>Фокус на Ръководството</h3>
+                <p>Освобождавате стратегически часове, вместо да гасите ежедневна оперативна рутина.</p>
             </div>
         </div>
     </section>
 
-    <section class="how-it-works" id="how-it-works">
+    <section class="features" id="packs" data-scroll-section="packs">
+        <div class="section-header">
+            <h2>OpenClaw Пакети по Случай на Употреба</h2>
+            <p>Избирате приоритет, ние внедряваме целия работен поток</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-number">PACK 01</div>
+                <h3>CEO / Founder Playbook</h3>
+                <p>Дневни брифинги, investor updates, приоритизация на задачи и ключови решения.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">PACK 02</div>
+                <h3>COO Operations Pack</h3>
+                <p>Автоматични статуси, синхронизация между инструменти и контрол на изпълнението.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">PACK 03</div>
+                <h3>Inbox Commander</h3>
+                <p>Приоритизация, чернови, follow-up логика и ескалации при високорискови разговори.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">PACK 04</div>
+                <h3>Calendar Architect</h3>
+                <p>Координация на срещи, подготовка, напомняния и post-meeting action extraction.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">PACK 05</div>
+                <h3>HR / People Ops Kit</h3>
+                <p>Организация на интервюта, кандидатски комуникации и процеси за въвеждане.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">PACK 06</div>
+                <h3>Finance / Legal Shield</h3>
+                <p>Следене на срокове, договорни стъпки и структурирани проверки преди действие.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="trust" data-scroll-section="trust">
         <div class="how-it-works-inner">
             <div class="section-header">
-                <h2>Как Работи</h2>
-                <p>Ние се грижим за всичко — от настройката до непрекъснатата оптимизация</p>
+                <h2>Контролиран Достъп и Безопасна Автономия</h2>
+                <p>OpenClaw внедряване с ясни guardrails още от ден първи</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">SAFE 01</div>
+                    <h3>Ограничени Права</h3>
+                    <p>Минимални разрешения и role-based граници за действия във всеки интегриран инструмент.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">SAFE 02</div>
+                    <h3>Одитна Проследимост</h3>
+                    <p>Пълен лог на автоматизираните действия с контекст и проверимост за екипа ви.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">SAFE 03</div>
+                    <h3>Human-in-the-Loop Рамп</h3>
+                    <p>Контролиран период на одобрение преди преминаване към по-висока автономия.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="deploy" data-scroll-section="deploy">
+        <div class="how-it-works-inner">
+            <div class="section-header">
+                <h2>Какво Внедряваме за Вас</h2>
+                <p>Готов OpenClaw стек с реални бизнес процеси, не само конфигурация</p>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3>Разговор за Запознаване</h3>
-                        <p>Научаваме за вашите работни процеси, предпочитания и предизвикателства. Какви задачи ви отнемат време? Каква информация ви е нужна ежедневно? Документираме всичко.</p>
+                        <h3>Архитектура и Достъп</h3>
+                        <p>Дефинираме каналите, правата, ескалациите и границите за решения според ролите в екипа.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Конфигуриране на Агента</h3>
-                        <p>Нашите инженери инсталират и конфигурират вашия личен OpenClaw агент. Интегрираме имейл, календар, CRM и специализираните ви инструменти.</p>
+                        <h3>Свързване на Канали и Инструменти</h3>
+                        <p>OpenClaw се свързва към имейл, календар, CRM, задачи и вътрешни системи с контролирани ключове.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Обучение и Въвеждане</h3>
-                        <p>Обучаваме асистента на вашия тон, предпочитания и работни процеси. Получавате персонализирана система, създадена около начина, по който работите.</p>
+                        <h3>Workflow и Skill Конфигурация</h3>
+                        <p>Изграждаме автоматизациите, шаблоните и отчетите според вашия оперативен ритъм.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">04</div>
                     <div class="step-content">
-                        <h3>Стартиране</h3>
-                        <p>Асистентът ви започва работа веднага. Следим представянето, събираме обратна връзка и настройваме за оптимални резултати.</p>
+                        <h3>Go-Live и Оптимизация</h3>
+                        <p>Стартирате с KPI базова линия, наблюдение и 30 дни настройка за по-висока надеждност.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="snapshot" data-scroll-section="snapshot">
+        <div class="section-header">
+            <h2>Преди OpenClaw / След OpenClaw</h2>
+            <p>Разликата е оперативна: по-малко хаос, повече изпълнение</p>
+        </div>
+        <div class="snapshot-grid">
+            <article class="snapshot-card snapshot-before">
+                <h3>Преди</h3>
+                <p>Административните задачи ви спират, inbox-ът и календарът са в хаос и се изпускат възможности.</p>
+            </article>
+            <article class="snapshot-card snapshot-after">
+                <h3>След</h3>
+                <p>OpenClaw организира, генерира, проследява и ескалира, а вие получавате само решенията за действие.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="testimonials" data-scroll-section="testimonials">
         <div class="section-header">
             <h2>Истории от Клиенти в България</h2>
-            <p>Реални екипи, които делегираха рутината и освободиха време за растеж</p>
+            <p>Първо лице, реални резултати и измерима оперативна промяна</p>
         </div>
         <div class="testimonials-grid">
             <article class="testimonial-card">
                 <p class="testimonial-quote">“За две седмици свалихме над 60% от хаоса в имейлите и срещите.”</p>
-                <p class="testimonial-story">Преди Social Empire прекарвах по 3 часа дневно в имейли и координация. След внедряването AI асистентът ми пое входящата комуникация, напомнянията и подготовката за срещи.</p>
+                <p class="testimonial-story">Преди Social Empire прекарвах по 3 часа дневно в имейли и координация. След внедряването OpenClaw пое входящата комуникация, напомнянията и подготовката за срещи.</p>
                 <div class="testimonial-meta">
                     <p class="testimonial-name">Николай Петров</p>
                     <p class="testimonial-role">Управител, eCommerce бранд, София</p>
@@ -1041,7 +1340,7 @@
             </article>
             <article class="testimonial-card">
                 <p class="testimonial-quote">“Екипът ни спря да гаси пожари и започна да работи по приоритетите.”</p>
-                <p class="testimonial-story">Използвам AI асистента за оперативни брифинги, проследяване на задачи и автоматизирани обобщения. Това ми освободи по над 8 часа седмично за стратегически решения.</p>
+                <p class="testimonial-story">Използвам OpenClaw за оперативни брифинги, проследяване на задачи и автоматизирани обобщения. Това ми освободи по над 8 часа седмично за стратегически решения.</p>
                 <div class="testimonial-meta">
                     <p class="testimonial-name">Десислава Иванова</p>
                     <p class="testimonial-role">Оперативен директор, производствена фирма, Пловдив</p>
@@ -1049,7 +1348,7 @@
             </article>
             <article class="testimonial-card">
                 <p class="testimonial-quote">“Вече не изпускаме важни заявки и отговаряме по-бързо на клиенти.”</p>
-                <p class="testimonial-story">Внедрих асистента за три ключови процеса: клиентски запитвания, седмични отчети и календар. Резултатът беше по-бърз цикъл на обслужване и по-малко ръчни грешки.</p>
+                <p class="testimonial-story">Внедрих OpenClaw за три ключови процеса: клиентски запитвания, седмични отчети и календар. Резултатът беше по-бърз цикъл на обслужване и по-малко ръчни грешки.</p>
                 <div class="testimonial-meta">
                     <p class="testimonial-name">Георги Стоянов</p>
                     <p class="testimonial-role">Основател, маркетинг агенция, Варна</p>
@@ -1058,50 +1357,83 @@
         </div>
     </section>
 
-    <section class="pricing" id="pricing">
+    <section class="pricing" id="offer" data-scroll-section="offer">
         <div class="section-header">
-            <h2>Инвестиция</h2>
-            <p>Еднократна настройка. Без месечни такси за самия агент.</p>
+            <h2>Структура на Офертата</h2>
+            <p>Започвате с Quickstart за 250 EUR и надграждате при нужда от пълен DFY обхват</p>
         </div>
-        <div class="pricing-card">
-            <div class="pricing-label">Пълно Настройване</div>
-            <div class="price">250 EUR</div>
-            <div class="price-note">Еднократна инвестиция • Готов за 48 часа</div>
-            <ul class="pricing-features">
-                <li>Пълно инсталиране и конфигуриране на агента</li>
-                <li>Интеграция с имейл, календар и инструменти</li>
-                <li>Персонализирана автоматизация на работни процеси</li>
-                <li>Обучение и настройка на тона на асистента</li>
-                <li>30 дни поддръжка и оптимизация</li>
-                <li>Документация и предаване</li>
-            </ul>
-            <a href="mailto:hello@socialempire.bg?subject=Запитване за AI Асистент" class="btn-primary">Започнете Сега</a>
+        <div class="pricing-grid">
+            <div class="pricing-card pricing-card-primary">
+                <div class="pricing-label">OpenClaw Quickstart</div>
+                <div class="price">250 EUR</div>
+                <div class="price-note">Еднократно • Запазвате цената за 7 дни • Старт до 48 часа</div>
+                <ul class="pricing-features">
+                    <li>Discovery разговор и оперативно картографиране</li>
+                    <li>Начално свързване на канали и инструменти</li>
+                    <li>Конфигуриране на ключови работни потоци</li>
+                    <li>Персонален 3-стъпков план за внедряване</li>
+                </ul>
+                <button type="button" class="btn-primary" data-calendar-link data-calendar-link-source="quickstart" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете Quickstart Разговор</button>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-label">DFY Implementation</div>
+                <div class="price">От 1,900 EUR</div>
+                <div class="price-note">Пълно внедряване с governance и оптимизация</div>
+                <ul class="pricing-features">
+                    <li>Пълна OpenClaw архитектура и hardening</li>
+                    <li>Многоканална оркестрация на работни потоци</li>
+                    <li>Skill стек, шаблони и SOP документация</li>
+                    <li>30 дни оптимизация и обучение на екипа</li>
+                </ul>
+                <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="implementation" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Прегледайте Пълния Обхват</button>
+            </div>
         </div>
+        <form class="lead-capture lead-capture-wide" data-lead-form="offer" data-lead-channel="offer" novalidate>
+            <div class="lead-fields">
+                <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+            </div>
+            <div class="lead-actions">
+                <button type="submit" class="btn-primary">Изпратете OpenClaw План</button>
+                <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="offer_form" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете Стратегически Разговор</button>
+            </div>
+            <p class="form-note">Fallback: <a href="mailto:hello@socialempire.bg?subject=OpenClaw%20DFY%20Оферта" data-fallback-mailto="offer">hello@socialempire.bg</a></p>
+            <p class="form-success" data-form-success>Получихме заявката. Отваряме календара за избор на час.</p>
+        </form>
     </section>
 
-    <section class="cta-section">
-        <h2>Спестете 10+ Часа Всяка Седмица</h2>
-        <p>Спрете да се давите в административни задачи. Вашият AI изпълнителен асистент е готов да работи — нека го настроим за вас.</p>
-        <div class="cta-group">
-            <a href="mailto:hello@socialempire.bg?subject=Запитване за AI Асистент" class="btn-primary">Получете Вашия Асистент</a>
-        </div>
+    <section class="cta-section" data-scroll-section="final_cta">
+        <h2>Спрете с AI шумa. Внедрете оператор.</h2>
+        <p>OpenClaw носи стойност, когато е внедрен около реални бизнес процеси. Ние правим внедряването, вие държите резултата.</p>
+        <form class="lead-capture lead-capture-wide" data-lead-form="final" data-lead-channel="final" novalidate>
+            <div class="lead-fields">
+                <input class="lead-input" type="text" name="name" placeholder="Име и фамилия" data-lead-field="name" required>
+                <input class="lead-input" type="email" name="email" placeholder="you@company.com" data-lead-field="email" required>
+            </div>
+            <div class="lead-actions">
+                <button type="submit" class="btn-primary">Заявете OpenClaw Настройка</button>
+                <button type="button" class="btn-secondary" data-calendar-link data-calendar-link-source="final_cta" data-calendar-url="https://cal.com/socialempire/openclaw-audit">Запишете 20-мин Одит</button>
+            </div>
+            <p class="form-note">Предпочитате директен контакт? <a href="mailto:hello@socialempire.bg?subject=OpenClaw%20Executive%20Setup" data-fallback-mailto="final">Пишете ни по имейл</a>.</p>
+            <p class="form-success" data-form-success>Благодарим. Получихме данните и стартираме насрочване.</p>
+        </form>
     </section>
 
-    <section class="exit-intent" id="exit-intent" aria-hidden="true">
+    <section class="exit-intent" id="exit-intent" aria-hidden="true" data-exit-intent="true">
         <div class="exit-intent-backdrop" data-exit-close></div>
         <div class="exit-intent-card" role="dialog" aria-modal="true" aria-labelledby="exit-intent-title-bg">
             <button class="exit-intent-close" type="button" data-exit-close aria-label="Затвори">×</button>
             <p class="exit-intent-kicker">Преди да излезете</p>
-            <h3 id="exit-intent-title-bg">Вземете безплатен AI план + заключете 250 EUR за 7 дни</h3>
+            <h3 id="exit-intent-title-bg">Преди да излезете, запазете 250 EUR цена за 7 дни</h3>
             <p class="exit-intent-insight" data-exit-insight>
-                Ще ви изпратим кратък персонален план, базиран на целите ви.
+                Ще получите кратък OpenClaw план с ясни стъпки според най-голямото ви оперативно забавяне.
             </p>
             <ul class="exit-benefits">
                 <li>Персонален 3-стъпков план за автоматизация</li>
                 <li>Приоритетно стартиране до 48 часа</li>
                 <li>Цена 250 EUR запазена за 7 дни</li>
             </ul>
-            <form class="exit-intent-form" data-exit-form novalidate>
+            <form class="exit-intent-form" data-exit-form="lead" data-lead-channel="exit-intent" novalidate>
                 <label class="exit-intent-label" for="exit-email-bg">Работен имейл</label>
                 <input
                     id="exit-email-bg"
@@ -1132,46 +1464,181 @@
     </section>
 
     <footer>
-        <p>© 2026 Social Empire — Настройване на AI Асистенти за Бизнеса</p>
+        <p>© 2026 Social Empire — OpenClaw внедряване за бизнеса</p>
     </footer>
 
     <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        const CALENDAR_URL = 'https://cal.com/socialempire/openclaw-audit';
+
+        const trackEvent = (eventName, data = {}) => {
+            const payload = {
+                event: eventName,
+                lang: document.documentElement.lang,
+                ts: new Date().toISOString(),
+                ...data
+            };
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(payload);
+
+            fetch('/api/analytics', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        };
+
+        const postLead = async (path, payload) => {
+            try {
+                await fetch(path, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (_) {
+                // No-op on static deployment fallback.
+            }
+        };
+
+        const openCalendar = (source, url) => {
+            trackEvent('calendar_booking_click', { source });
+            const calendarUrl = url || CALENDAR_URL;
+            const newTab = window.open(calendarUrl, '_blank', 'noopener,noreferrer');
+            if (!newTab) {
+                window.location.href = calendarUrl;
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (event) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('[data-track]').forEach((element) => {
+            element.addEventListener('click', () => {
+                trackEvent(element.getAttribute('data-track'));
+            });
+        });
+
+        document.querySelectorAll('.lang-switch[data-language-target]').forEach((link) => {
+            link.addEventListener('click', () => {
+                trackEvent('language_switch', {
+                    source: link.dataset.languageSwitchSource || 'nav',
+                    target: link.dataset.languageTarget
                 });
             });
         });
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.querySelectorAll('[data-calendar-link]').forEach((button) => {
+            button.addEventListener('click', () => {
+                openCalendar(button.dataset.calendarLinkSource || 'unknown', button.dataset.calendarUrl || CALENDAR_URL);
+            });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-        // Observe feature cards
-        document.querySelectorAll('.feature-card').forEach((card, index) => {
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .snapshot-card, .proof-item').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
+            card.style.transition = `all 0.55s ease ${index * 0.04}s`;
+            revealObserver.observe(card);
         });
 
-        // Exit-intent lead capture
+        const sectionMilestones = new Set();
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const sectionName = entry.target.dataset.scrollSection;
+                if (!sectionName) return;
+                const ratio = entry.intersectionRatio;
+                [0.25, 0.5, 0.75].forEach((milestone) => {
+                    if (ratio >= milestone) {
+                        const key = `${sectionName}_${milestone}`;
+                        if (!sectionMilestones.has(key)) {
+                            sectionMilestones.add(key);
+                            trackEvent('section_scroll_milestone', {
+                                section: sectionName,
+                                milestone: Math.round(milestone * 100)
+                            });
+                        }
+                    }
+                });
+            });
+        }, { threshold: [0.25, 0.5, 0.75] });
+
+        document.querySelectorAll('[data-scroll-section]').forEach((section) => {
+            sectionObserver.observe(section);
+        });
+
+        document.querySelectorAll('[data-lead-form]').forEach((form) => {
+            const formName = form.dataset.leadForm || 'unknown';
+            const formChannel = form.dataset.leadChannel || formName;
+            const nameInput = form.querySelector('[data-lead-field="name"]');
+            const emailInput = form.querySelector('[data-lead-field="email"]');
+            const successNote = form.querySelector('[data-form-success]');
+            let started = false;
+
+            [nameInput, emailInput].forEach((input) => {
+                if (!input) return;
+                input.addEventListener('focus', () => {
+                    if (started) return;
+                    started = true;
+                    trackEvent('form_start', { form: formName, channel: formChannel });
+                });
+            });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const name = (nameInput?.value || '').trim();
+                const email = (emailInput?.value || '').trim();
+                const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                if (!name || !emailOk) {
+                    trackEvent('form_submit_error', { form: formName, channel: formChannel, reason: 'validation' });
+                    if (!name && nameInput) {
+                        nameInput.focus();
+                        return;
+                    }
+                    if (emailInput) {
+                        emailInput.focus();
+                        emailInput.style.borderColor = '#d25f5f';
+                    }
+                    return;
+                }
+
+                if (emailInput) emailInput.style.borderColor = '';
+
+                const payload = {
+                    form: formName,
+                    channel: formChannel,
+                    name,
+                    email,
+                    page: window.location.pathname
+                };
+
+                trackEvent('form_submit_success', { form: formName, channel: formChannel });
+                await postLead('/api/leads/mini-form', payload);
+
+                if (successNote) {
+                    successNote.classList.add('is-visible');
+                }
+
+                openCalendar(`${formChannel}_submit`, CALENDAR_URL);
+            });
+        });
+
         (function initExitIntent() {
-            const storageKey = 'se_exit_intent_v1';
+            const storageKey = 'se_exit_intent_v2';
             const exitModal = document.getElementById('exit-intent');
             if (!exitModal) return;
 
@@ -1191,6 +1658,7 @@
             const focusButtons = exitModal.querySelectorAll('.exit-pill');
 
             let isVisible = false;
+            let viewedTracked = false;
             let maxScroll = 0;
             let lastScrollY = window.scrollY;
             let upwardSignals = 0;
@@ -1211,14 +1679,14 @@
 
             const setInsightCopy = () => {
                 if (maxScroll >= 65) {
-                    insight.textContent = `Разгледахте ${maxScroll}% от страницата. Нека ви изпратим конкретен план за вашия екип.`;
+                    insight.textContent = `Разгледахте ${maxScroll}% от страницата. Можем да ви изпратим план за внедряване според вашия екип.`;
                     return;
                 }
                 if (getTimeSpent() >= 40) {
-                    insight.textContent = 'Виждаме, че проучвате внимателно. Ще получите кратък план с ясни следващи стъпки.';
+                    insight.textContent = 'Виждаме, че проучвате детайлно. Ще получите кратък план с ясни следващи стъпки.';
                     return;
                 }
-                insight.textContent = 'Преди да излезете, вземете персонален AI план безплатно.';
+                insight.textContent = 'Вземете персонален OpenClaw план и запазете quickstart цената за 7 дни.';
             };
 
             const openExitIntent = (reason) => {
@@ -1236,6 +1704,15 @@
                 exitModal.classList.add('is-visible');
                 exitModal.setAttribute('aria-hidden', 'false');
                 document.body.classList.add('exit-intent-open');
+
+                if (!viewedTracked) {
+                    viewedTracked = true;
+                    trackEvent('exit_intent_view', {
+                        reason,
+                        scroll: maxScroll,
+                        seconds: getTimeSpent()
+                    });
+                }
 
                 setTimeout(() => {
                     emailInput.focus();
@@ -1304,13 +1781,14 @@
                 openExitIntent('timed_offer');
             }, 45000);
 
-            form.addEventListener('submit', (event) => {
+            form.addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const email = emailInput.value.trim();
                 const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
                 if (!emailIsValid) {
                     emailInput.focus();
                     emailInput.style.borderColor = '#d25f5f';
+                    trackEvent('exit_intent_submit_error', { reason: 'validation' });
                     return;
                 }
 
@@ -1318,21 +1796,24 @@
                 maxScroll = Math.max(maxScroll, getScrollPercent());
                 const seconds = getTimeSpent();
 
-                const subject = 'Заявка: AI план + запазена цена 250 EUR';
-                const body = [
-                    'Здравейте,',
-                    'Искам безплатния персонален AI план и заключване на цена 250 EUR за 7 дни.',
-                    '',
-                    `Имейл: ${email}`,
-                    `Фокус: ${focusInput.value || 'Имейли'}`,
-                    `Причина за показване: ${reasonInput.value || 'unknown'}`,
-                    `Прегледана част от страницата: ${maxScroll}%`,
-                    `Време на страницата: ${seconds} секунди`
-                ].join('\n');
+                trackEvent('exit_intent_submit', {
+                    focus: focusInput.value || 'Имейли',
+                    reason: reasonInput.value || 'unknown',
+                    scroll: maxScroll,
+                    seconds
+                });
+
+                await postLead('/api/leads/exit-intent', {
+                    email,
+                    focus: focusInput.value || 'Имейли',
+                    reason: reasonInput.value || 'unknown',
+                    scroll: maxScroll,
+                    seconds
+                });
 
                 rememberState({ converted: true, leadEmail: email, convertedAt: Date.now() });
-                window.location.href = `mailto:hello@socialempire.bg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 closeExitIntent(false);
+                openCalendar('exit_intent_submit', CALENDAR_URL);
             });
         })();
     </script>
