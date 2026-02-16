@@ -425,6 +425,186 @@
             font-size: 0.85rem;
         }
 
+        /* Exit Intent */
+        body.exit-intent-open {
+            overflow: hidden;
+        }
+
+        .exit-intent {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .exit-intent.is-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .exit-intent-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 6, 7, 0.82);
+            backdrop-filter: blur(4px);
+        }
+
+        .exit-intent-card {
+            position: relative;
+            width: min(680px, 100%);
+            background: linear-gradient(165deg, rgba(20, 20, 22, 0.98), rgba(10, 10, 11, 0.96));
+            border: 1px solid rgba(201, 169, 97, 0.45);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65), 0 0 45px rgba(201, 169, 97, 0.1);
+            padding: 2rem;
+            transform: translateY(18px) scale(0.98);
+            transition: transform 0.3s ease;
+        }
+
+        .exit-intent.is-visible .exit-intent-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .exit-intent-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .exit-intent-close:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .exit-intent-kicker {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.65rem;
+        }
+
+        .exit-intent h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.25rem);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .exit-intent-insight {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+
+        .exit-benefits {
+            list-style: none;
+            display: grid;
+            gap: 0.45rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .exit-benefits li {
+            color: #d4d4d4;
+            font-size: 0.9rem;
+        }
+
+        .exit-benefits li::before {
+            content: "✓";
+            color: var(--accent);
+            margin-right: 0.7rem;
+        }
+
+        .exit-intent-form {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .exit-intent-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .exit-intent-input {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            background: rgba(10, 10, 11, 0.85);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .exit-intent-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.18);
+        }
+
+        .exit-focus-label {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.2rem;
+        }
+
+        .exit-pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .exit-pill {
+            padding: 0.45rem 0.8rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .exit-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .exit-pill.is-active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .exit-intent-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .exit-intent-note {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -446,6 +626,19 @@
             }
 
             .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .exit-intent-card {
+                padding: 1.3rem 1rem 1rem;
+            }
+
+            .exit-intent-actions {
+                flex-direction: column;
+            }
+
+            .exit-intent-actions .btn-primary,
+            .exit-intent-actions .btn-secondary {
                 width: 100%;
             }
         }
@@ -597,6 +790,50 @@
         </div>
     </section>
 
+    <section class="exit-intent" id="exit-intent" aria-hidden="true">
+        <div class="exit-intent-backdrop" data-exit-close></div>
+        <div class="exit-intent-card" role="dialog" aria-modal="true" aria-labelledby="exit-intent-title-en">
+            <button class="exit-intent-close" type="button" data-exit-close aria-label="Close">×</button>
+            <p class="exit-intent-kicker">Before You Go</p>
+            <h3 id="exit-intent-title-en">Get a free AI action plan + lock 250 EUR for 7 days</h3>
+            <p class="exit-intent-insight" data-exit-insight>
+                We will send a short personalized plan based on your priorities.
+            </p>
+            <ul class="exit-benefits">
+                <li>Personal 3-step automation roadmap</li>
+                <li>Priority onboarding in up to 48 hours</li>
+                <li>250 EUR setup price locked for 7 days</li>
+            </ul>
+            <form class="exit-intent-form" data-exit-form novalidate>
+                <label class="exit-intent-label" for="exit-email-en">Work email</label>
+                <input
+                    id="exit-email-en"
+                    class="exit-intent-input"
+                    type="email"
+                    name="email"
+                    data-exit-email
+                    placeholder="you@company.com"
+                    required
+                >
+                <p class="exit-focus-label">What slows you down the most?</p>
+                <div class="exit-pill-group">
+                    <button type="button" class="exit-pill is-active" data-focus="Email overload">Email overload</button>
+                    <button type="button" class="exit-pill" data-focus="Scheduling">Scheduling</button>
+                    <button type="button" class="exit-pill" data-focus="Operations">Operations</button>
+                </div>
+                <input type="hidden" name="focus" value="Email overload" data-exit-focus>
+                <input type="hidden" name="reason" value="" data-exit-reason>
+                <input type="hidden" name="scroll" value="" data-exit-scroll>
+                <input type="hidden" name="seconds" value="" data-exit-seconds>
+                <div class="exit-intent-actions">
+                    <button type="submit" class="btn-primary">Send My Plan</button>
+                    <button type="button" class="btn-secondary" data-exit-dismiss>No Thanks</button>
+                </div>
+                <p class="exit-intent-note">10-second opt-in • No spam</p>
+            </form>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 Social Empire — Done-For-You AI Assistant Setup</p>
     </footer>
@@ -634,6 +871,173 @@
             card.style.transition = `all 0.6s ease ${index * 0.1}s`;
             observer.observe(card);
         });
+
+        // Exit-intent lead capture
+        (function initExitIntent() {
+            const storageKey = 'se_exit_intent_v1';
+            const exitModal = document.getElementById('exit-intent');
+            if (!exitModal) return;
+
+            const state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            if (state.converted) return;
+            if (state.dismissedUntil && Date.now() < state.dismissedUntil) return;
+
+            const insight = exitModal.querySelector('[data-exit-insight]');
+            const form = exitModal.querySelector('[data-exit-form]');
+            const emailInput = exitModal.querySelector('[data-exit-email]');
+            const focusInput = exitModal.querySelector('[data-exit-focus]');
+            const reasonInput = exitModal.querySelector('[data-exit-reason]');
+            const scrollInput = exitModal.querySelector('[data-exit-scroll]');
+            const secondsInput = exitModal.querySelector('[data-exit-seconds]');
+            const closeTriggers = exitModal.querySelectorAll('[data-exit-close]');
+            const dismissBtn = exitModal.querySelector('[data-exit-dismiss]');
+            const focusButtons = exitModal.querySelectorAll('.exit-pill');
+
+            let isVisible = false;
+            let maxScroll = 0;
+            let lastScrollY = window.scrollY;
+            let upwardSignals = 0;
+            const startedAt = Date.now();
+
+            const getTimeSpent = () => Math.round((Date.now() - startedAt) / 1000);
+            const getScrollPercent = () => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+                const max = document.documentElement.scrollHeight - window.innerHeight;
+                if (max <= 0) return 0;
+                return Math.min(100, Math.round((scrollTop / max) * 100));
+            };
+
+            const rememberState = (partialState) => {
+                const newState = { ...state, ...partialState };
+                localStorage.setItem(storageKey, JSON.stringify(newState));
+            };
+
+            const setInsightCopy = () => {
+                if (maxScroll >= 65) {
+                    insight.textContent = `You already explored ${maxScroll}% of the page. Let us send a plan tailored to your team.`;
+                    return;
+                }
+                if (getTimeSpent() >= 40) {
+                    insight.textContent = 'You are evaluating this carefully. We can send a concise plan with clear next steps.';
+                    return;
+                }
+                insight.textContent = 'Before you leave, grab your personalized AI action plan for free.';
+            };
+
+            const openExitIntent = (reason) => {
+                if (isVisible) return;
+                if (getTimeSpent() < 7) return;
+
+                isVisible = true;
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+                setInsightCopy();
+
+                reasonInput.value = reason;
+                scrollInput.value = String(maxScroll);
+                secondsInput.value = String(getTimeSpent());
+
+                exitModal.classList.add('is-visible');
+                exitModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('exit-intent-open');
+
+                setTimeout(() => {
+                    emailInput.focus();
+                }, 120);
+            };
+
+            const closeExitIntent = (persistDismiss) => {
+                if (!isVisible) return;
+                isVisible = false;
+                exitModal.classList.remove('is-visible');
+                exitModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('exit-intent-open');
+
+                if (persistDismiss) {
+                    rememberState({ dismissedUntil: Date.now() + 2 * 24 * 60 * 60 * 1000 });
+                }
+            };
+
+            closeTriggers.forEach((element) => {
+                element.addEventListener('click', () => closeExitIntent(false));
+            });
+
+            dismissBtn.addEventListener('click', () => closeExitIntent(true));
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeExitIntent(false);
+            });
+
+            focusButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    focusButtons.forEach((item) => item.classList.remove('is-active'));
+                    button.classList.add('is-active');
+                    focusInput.value = button.getAttribute('data-focus') || 'Email overload';
+                });
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                if (event.clientY <= 12 && !event.relatedTarget) {
+                    openExitIntent('cursor_top');
+                }
+            });
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    openExitIntent('tab_hidden');
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+
+                const strongUpMove = lastScrollY - currentScroll > 90;
+                const nearTop = currentScroll < 220;
+                if (strongUpMove && nearTop && getTimeSpent() > 10) {
+                    upwardSignals += 1;
+                    if (upwardSignals >= 2) {
+                        openExitIntent('mobile_up_scroll');
+                    }
+                }
+
+                lastScrollY = currentScroll;
+            }, { passive: true });
+
+            setTimeout(() => {
+                openExitIntent('timed_offer');
+            }, 45000);
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const email = emailInput.value.trim();
+                const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                if (!emailIsValid) {
+                    emailInput.focus();
+                    emailInput.style.borderColor = '#d25f5f';
+                    return;
+                }
+
+                emailInput.style.borderColor = '';
+                maxScroll = Math.max(maxScroll, getScrollPercent());
+                const seconds = getTimeSpent();
+
+                const subject = 'Request: AI action plan + locked 250 EUR setup';
+                const body = [
+                    'Hi team,',
+                    'I want the free personalized AI action plan and to lock the 250 EUR setup price for 7 days.',
+                    '',
+                    `Email: ${email}`,
+                    `Focus: ${focusInput.value || 'Email overload'}`,
+                    `Display reason: ${reasonInput.value || 'unknown'}`,
+                    `Page explored: ${maxScroll}%`,
+                    `Time on page: ${seconds} seconds`
+                ].join('\n');
+
+                rememberState({ converted: true, leadEmail: email, convertedAt: Date.now() });
+                window.location.href = `mailto:hello@socialempire.bg?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                closeExitIntent(false);
+            });
+        })();
     </script>
 </body>
 </html>
