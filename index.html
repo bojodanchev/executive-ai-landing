@@ -32,7 +32,6 @@
             font-size: 18px;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -64,14 +63,12 @@
             font-size: 0.95rem;
         }
 
-        /* Sections */
         section {
             padding: 6rem 2rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        /* Hero */
         .hero {
             min-height: auto;
             display: flex;
@@ -102,7 +99,6 @@
             margin: 0 auto 2rem;
         }
 
-        /* Video Container */
         .video-container {
             width: 100%;
             max-width: 720px;
@@ -168,13 +164,6 @@
             opacity: 0.9;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-        }
-
-        /* Section headers */
         h2 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -190,10 +179,9 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Service Cards with Links */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.25rem;
             margin-top: 2.5rem;
         }
@@ -245,7 +233,6 @@
             transform: translateX(4px);
         }
 
-        /* Comparison */
         .split {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -285,7 +272,6 @@
             color: #5fd28a;
         }
 
-        /* Steps */
         .steps {
             display: flex;
             flex-direction: column;
@@ -319,7 +305,6 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials */
         .quote {
             background: var(--bg-light);
             padding: 1.75rem;
@@ -346,7 +331,6 @@
             font-size: 0.8rem;
         }
 
-        /* Form */
         .contact-form {
             background: var(--bg-light);
             padding: 2.5rem 2rem;
@@ -393,7 +377,6 @@
             resize: vertical;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 2.5rem 2rem;
@@ -402,7 +385,6 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .split {
                 grid-template-columns: 1fr;
@@ -432,9 +414,8 @@
         <a href="#contact" class="nav-cta">Заявете разговор</a>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
-        <h1>Работете по-малко, <span>постигайте повече</span></h1>
+        <h1>Работете по-малко, <span>постигайте повече</span>.</h1>
         <p class="hero-subtitle">Настройваме интелигентен асистент, който поема имейлите, срещите и рутинните задачи.</p>
         
         <div class="video-container">
@@ -443,15 +424,14 @@
                     <circle cx="12" cy="12" r="10"/>
                     <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/>
                 </svg>
-                <p>Вашето видео тук</p>
-                <small>До 100MB</small>
+                <p>Вашето видео тук.</p>
+                <small>До 100MB.</small>
             </div>
         </div>
 
         <a href="#services" class="btn">Вижте услугите</a>
     </section>
 
-    <!-- Services with Links -->
     <section id="services">
         <h2>Нашите услуги</h2>
         <p style="text-align: center; color: var(--text-dim); max-width: 500px; margin: 0 auto;">Кликнете на всяка услуга, за да научите повече за процеса.</p>
@@ -460,67 +440,77 @@
             <a href="ceo-playbook.html" class="service-card">
                 <h3>CEO Playbook</h3>
                 <p>Дневни отчети, приоритизация на задачите и подготовка за важни решения.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
             </a>
 
             <a href="coo-operations.html" class="service-card">
                 <h3>COO Operations</h3>
                 <p>Автоматични статуси и свързване между различни програми и системи.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
             </a>
 
             <a href="inbox-commander.html" class="service-card">
                 <h3>Inbox Commander</h3>
                 <p>Сортира имейлите, пише отговори и напомня за важни съобщения.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
             </a>
 
             <a href="calendar-architect.html" class="service-card">
                 <h3>Calendar Architect</h3>
                 <p>Организира срещи, праща напомняния и подготвя документи.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
             </a>
 
             <a href="hr-kit.html" class="service-card">
                 <h3>HR Kit</h3>
                 <p>Помага с интервютата, кандидатите и новите служители.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
             </a>
 
             <a href="finance-shield.html" class="service-card">
                 <h3>Finance Shield</h3>
                 <p>Следи срокове, договори и важни финансови задачи.</p>
-                <span class="learn-more">Научете повече</span>
+                <span class="learn-more">Научете повече →</span>
+            </a>
+
+            <a href="marketing-pro.html" class="service-card">
+                <h3>Marketing Pro</h3>
+                <p>Създава съдържание, планира кампании и анализира резултати.</p>
+                <span class="learn-more">Научете повече →</span>
+            </a>
+
+            <a href="sales-booster.html" class="service-card">
+                <h3>Sales Booster</h3>
+                <p>Проследява лийдове, подготвя оферти и следи продажбите.</p>
+                <span class="learn-more">Научете повече →</span>
             </a>
         </div>
     </section>
 
-    <!-- Before/After -->
     <section>
         <h2>Какво променяме</h2>
         <div class="split">
             <div class="box">
                 <h3>Преди</h3>
                 <ul>
-                    <li>Губите часове в имейли</li>
-                    <li>Пропускате срещи</li>
-                    <li>Рутинни въпроси от клиенти</li>
-                    <li>Няма време за важното</li>
+                    <li>Губите часове в имейли.</li>
+                    <li>Пропускате срещи.</li>
+                    <li>Рутинни въпроси от клиенти.</li>
+                    <li>Няма време за важното.</li>
                 </ul>
             </div>
             <div class="box after">
                 <h3>След Social Empire</h3>
                 <ul>
-                    <li>AI отговаря на имейлите</li>
-                    <li>Календарът се организира сам</li>
-                    <li>Клиентите са обслужени бързо</li>
-                    <li>Фокус върху растежа</li>
+                    <li>AI отговаря на имейлите.</li>
+                    <li>Календарът се организира сам.</li>
+                    <li>Клиентите са обслужени бързо.</li>
+                    <li>Фокус върху растежа.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Steps -->
     <section>
         <h2>Как става</h2>
         <div class="steps">
@@ -548,7 +538,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section>
         <h2>Какво казват клиентите</h2>
         <div class="quote">
@@ -563,7 +552,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
         <div class="contact-form">
             <h2>Готови ли сте?</h2>
@@ -572,14 +560,14 @@
                 <input type="text" placeholder="Вашето име" required>
                 <input type="email" placeholder="Имейл" required>
                 <input type="tel" placeholder="Телефон">
-                <textarea placeholder="Разкажете ни за бизнеса си"></textarea>
+                <textarea placeholder="Разкажете ни за бизнеса си."></textarea>
                 <button type="submit" class="btn">Заявете разговор</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Social Empire</p>
+        <p>© 2026 Social Empire.</p>
     </footer>
 </body>
 </html>

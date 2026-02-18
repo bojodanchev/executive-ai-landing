@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Pro — Social Empire</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --bg-light: #141416;
+            --accent: #c9a961;
+            --text: #f5f5f5;
+            --text-dim: #888888;
+            --border: #2a2a2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .contact-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-section h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .contact-section > p {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-fields {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.95rem;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">SOCIAL EMPIRE</a>
+        <a href="index.html" class="back-link">← Назад</a>
+    </nav>
+
+    <main>
+        <h1>Marketing Pro</h1>
+        <p>AI асистент за вашия маркетинг. Създава съдържание, планира кампании и анализира резултатите, за да растете по-бързо.</p>
+
+        <div class="highlight-box">
+            <h3>Какво включва</h3>
+            <ul>
+                <li>Създаване на текстове за социални мрежи.</li>
+                <li>Планиране на публикации и кампании.</li>
+                <li>Анализ на engagement и резултати.</li>
+                <li>Идеи за ново съдържание според трендовете.</li>
+                <li>Автоматични отговори на коментари и съобщения.</li>
+            </ul>
+        </div>
+
+        <h2>Как работи процесът</h2>
+
+        <h3>Стъпка 1: Анализ на аудиторията</h3>
+        <p>AI-ът изучава вашата целева аудитория, конкуренцията и трендовете във вашия бранш. Разбира какво работи и какво не.</p>
+
+        <h3>Стъпка 2: Създаване на съдържание</h3>
+        <p>Генерира текстове за публикации, имейли, реклами и блог. Поддържа тон, който съвпада с вашия бранд.</p>
+
+        <h3>Стъпка 3: Оптимизация</h3>
+        <p>Следи резултатите от всяка публикация и кампания. Дава препоръки какво да подобрите за по-добри резултати.</p>
+
+        <h2>Примерен сценарий</h2>
+        <p>Нова продуктова кампания:</p>
+        <ol>
+            <li>AI-ът създава 10 варианта на постове за различни канали.</li>
+            <li>Планира график за публикуване през седмицата.</li>
+            <li>Следи кои постове се представят най-добре.</li>
+            <li>Дава идеи за следващи кампании на база данните.</li>
+        </ol>
+
+        <div class="contact-section">
+            <h2>Заявете Marketing Pro</h2>
+            <p>Разговаряйте с нас и ускорете маркетинга си с AI.</p>
+            <form class="form-fields">
+                <input type="text" placeholder="Вашето име" required>
+                <input type="email" placeholder="Имейл" required>
+                <input type="tel" placeholder="Телефон">
+                <textarea placeholder="В какви канали маркетирате в момента?"></textarea>
+                <button type="submit" class="btn">Изпратете запитване</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Social Empire.</p>
+    </footer>
+</body>
+</html>
