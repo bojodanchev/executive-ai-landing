@@ -385,10 +385,32 @@
             font-size: 0.9rem;
         }
 
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
         @media (max-width: 768px) {
-            .split {
-                grid-template-columns: 1fr;
+            .nav-menu {
+                gap: 1rem;
             }
+            
+            .nav-menu a {
+                font-size: 0.8rem;
+            }
+        }
             
             section {
                 padding: 4rem 1.5rem;
@@ -411,7 +433,12 @@
 <body>
     <nav>
         <div class="logo">SOCIAL EMPIRE</div>
-        <a href="#contact" class="nav-cta">Заявете разговор</a>
+        <div class="nav-menu">
+            <a href="#about">За нас</a>
+            <a href="#services">Всички страници</a>
+            <a href="terms.html">Общи условия</a>
+            <a href="#contact">Контакти</a>
+        </div>
     </nav>
 
     <section class="hero">
@@ -485,6 +512,18 @@
                 <span class="learn-more">Научете повече →</span>
             </a>
         </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>За нас</h2>
+        <p style="text-align: center; color: var(--text-dim); max-width: 600px; margin: 0 auto 1.5rem;">
+            Social Empire помага на български бизнеси да автоматизират рутинните задачи чрез AI. 
+            Нашият екип настройва интелигентни асистенти, които работят 24/7, за да пестят вашето време.
+        </p>
+        <p style="text-align: center; color: var(--text-dim); max-width: 600px; margin: 0 auto;">
+            Вече над 24 компании ни се довериха и спестяват средно по 8 часа седмично.
+        </p>
     </section>
 
     <section>
