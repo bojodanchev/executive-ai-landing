@@ -7,16 +7,15 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --bg-card: #0a0a0a;
+            --bg: #0a0a0b;
+            --bg-light: #141416;
             --accent: #c9a961;
-            --accent-glow: rgba(201, 169, 97, 0.4);
-            --text: #ffffff;
-            --text-dim: #666666;
-            --border: #1a1a1a;
+            --text: #f5f5f5;
+            --text-dim: #888888;
+            --border: #2a2a2c;
         }
 
         * {
@@ -26,32 +25,11 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             font-size: 18px;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        .bg-glow {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-2%, 2%); }
         }
 
         /* Navigation */
@@ -59,92 +37,63 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 3rem;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
             font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.2em;
+            font-size: 1.2rem;
             color: var(--accent);
         }
 
         .nav-cta {
             padding: 0.75rem 1.5rem;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
             background: var(--accent);
             color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
         }
 
-        /* Typography */
-        h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.02em;
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         /* Hero */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8rem 5% 4rem;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
+            text-align: center;
+            padding-top: 8rem;
         }
 
         .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
-            max-width: 900px;
         }
 
         .hero h1 span {
             color: var(--accent);
-            display: block;
         }
 
-        .hero-subtitle {
-            font-size: 1.35rem;
+        .hero p {
+            font-size: 1.25rem;
             color: var(--text-dim);
-            max-width: 550px;
-            margin-bottom: 3rem;
-            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
         .btn {
@@ -154,276 +103,183 @@
             color: var(--bg);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border-radius: 4px;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px var(--accent-glow);
+            opacity: 0.9;
         }
 
-        /* Sections */
-        section {
-            padding: 8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Section titles */
-        .section-header {
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
+        /* Section headers */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .section-header p {
-            color: var(--text-dim);
-            font-size: 1.25rem;
-            max-width: 500px;
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        /* Before/After - Asymmetric */
-        .comparison {
+        /* Problem/Solution */
+        .split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0;
+            gap: 3rem;
             margin-top: 3rem;
         }
 
-        .comp-box {
-            padding: 4rem;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .comp-box.before {
-            background: var(--bg-card);
+        .box {
+            padding: 2rem;
             border: 1px solid var(--border);
+            border-radius: 8px;
         }
 
-        .comp-box.after {
-            background: var(--accent);
-            color: var(--bg);
+        .box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
 
-        .comp-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            opacity: 0.6;
-        }
-
-        .comp-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .comp-list {
+        .box ul {
             list-style: none;
         }
 
-        .comp-list li {
-            padding: 0.75rem 0;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .box li {
+            padding: 0.5rem 0;
+            color: var(--text-dim);
         }
 
-        .comp-list li::before {
-            content: "—";
-            opacity: 0.5;
+        .box li:before {
+            content: "✗ ";
+            color: #d25f5f;
         }
 
-        /* Steps - Horizontal */
-        .steps-container {
+        .box.after li:before {
+            content: "✓ ";
+            color: #5fd28a;
+        }
+
+        /* Steps */
+        .steps {
             display: flex;
+            flex-direction: column;
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .step-card {
-            flex: 1;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 3rem 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
         }
 
         .step-num {
-            position: absolute;
-            top: -20px;
-            left: 2rem;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: var(--accent);
             color: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .step-card h3 {
-            font-size: 1.5rem;
-            margin: 1rem 0 1rem;
-            font-weight: 600;
-        }
-
-        .step-card p {
+        .step p {
             color: var(--text-dim);
-            line-height: 1.6;
         }
 
-        /* Packs - Staggered Grid */
-        .packs-grid {
+        /* Packs */
+        .packs {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 3rem;
         }
 
-        .pack-card {
-            background: var(--bg-card);
+        .pack {
+            padding: 1.5rem;
             border: 1px solid var(--border);
-            padding: 2.5rem;
-            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
-        .pack-card:nth-child(2),
-        .pack-card:nth-child(5) {
-            transform: translateY(40px);
-        }
-
-        .pack-card:hover {
-            border-color: var(--accent);
-        }
-
-        .pack-num {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
+        .pack h4 {
             color: var(--accent);
-            margin-bottom: 1rem;
+            font-size: 0.875rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
         }
 
-        .pack-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .pack-card p {
+        .pack p {
             color: var(--text-dim);
             font-size: 0.95rem;
-            line-height: 1.6;
         }
 
-        /* Testimonials - Large Cards */
-        .quotes-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+        /* Testimonials */
+        .quote {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
 
-        .quote-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            position: relative;
+        .quote p {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 1rem;
         }
 
-        .quote-card::before {
-            content: """;
-            position: absolute;
-            top: 1rem;
-            right: 2rem;
-            font-size: 6rem;
-            color: var(--accent);
-            opacity: 0.2;
-            line-height: 1;
-        }
-
-        .quote-card p {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-author {
+        .quote .author {
             color: var(--accent);
             font-weight: 600;
-            font-size: 1rem;
         }
 
-        .quote-role {
+        .quote .role {
             color: var(--text-dim);
             font-size: 0.875rem;
         }
 
-        /* Contact Section - Full Width */
-        .contact-section {
-            background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 6rem 5%;
-        }
-
-        .contact-inner {
-            max-width: 600px;
-            margin: 0 auto;
+        /* Form */
+        .contact-form {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            border-radius: 8px;
             text-align: center;
         }
 
-        .contact-inner h2 {
+        .contact-form h2 {
             margin-bottom: 0.5rem;
         }
 
-        .contact-inner > p {
+        .contact-form > p {
             color: var(--text-dim);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
-        .contact-form {
+        .form-fields {
             display: grid;
             gap: 1rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto 1rem;
         }
 
         input, textarea {
             width: 100%;
-            padding: 1.25rem;
+            padding: 1rem;
             background: var(--bg);
             border: 1px solid var(--border);
             color: var(--text);
             font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
+            border-radius: 4px;
         }
 
         input:focus, textarea:focus {
@@ -431,78 +287,31 @@
             border-color: var(--accent);
         }
 
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .btn-full {
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-
         /* Footer */
         footer {
-            padding: 3rem 5%;
             text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
             color: var(--text-dim);
         }
 
         /* Mobile */
-        @media (max-width: 1024px) {
-            .comparison {
-                grid-template-columns: 1fr;
-            }
-            
-            .comp-box {
-                padding: 3rem 2rem;
-                min-height: auto;
-            }
-            
-            .steps-container {
-                flex-direction: column;
-            }
-            
-            .packs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .pack-card:nth-child(2),
-            .pack-card:nth-child(5) {
-                transform: none;
-            }
-        }
-
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem 5%;
+            .split {
+                grid-template-columns: 1fr;
             }
             
             section {
-                padding: 5rem 5%;
+                padding: 4rem 1.5rem;
             }
             
-            .hero {
-                padding-top: 6rem;
-            }
-            
-            .packs-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .quotes-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
+            h2 {
+                font-size: 1.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
-
     <nav>
         <div class="logo">SOCIAL EMPIRE</div>
         <a href="#contact" class="nav-cta">Заявете разговор</a>
@@ -510,40 +319,31 @@
 
     <!-- 1. Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">AI помощник за бизнеса</div>
-            <h1>Работете по-малко, <span>постигайте повече</span></h1>
-            <p class="hero-subtitle">Настройваме интелигентен асистент, който поема имейлите, срещите и рутинните задачи. Вие се фокусирате върху важното.</p>
-            <a href="#contact" class="btn">Заявете безплатен разговор</a>
-        </div>
+        <h1>Работете по-малко, <span>постигайте повече</span></h1>
+        <p>Настройваме интелигентен асистент, който поема имейлите, срещите и рутинните задачи. Вие се фокусирате върху важното.</p>
+        <a href="#contact" class="btn">Заявете безплатен разговор</a>
     </section>
 
     <!-- 2. Problem → Solution -->
     <section>
-        <div class="section-header">
-            <h2>Какво променяме</h2>
-            <p>От хаос към ред. От претоварване към фокус.</p>
-        </div>
-        
-        <div class="comparison">
-            <div class="comp-box before">
-                <div class="comp-label">Преди</div>
-                <h3>Губите часове всеки ден</h3>
-                <ul class="comp-list">
-                    <li>Купища непрочетени имейли</li>
-                    <li>Пропуснати срещи и задачи</li>
-                    <li>Едни и същи въпроси от клиенти</li>
-                    <li>Няма време за растеж</li>
+        <h2>Какво променяме</h2>
+        <div class="split">
+            <div class="box">
+                <h3>Преди</h3>
+                <ul>
+                    <li>Губите часове в имейли всеки ден</li>
+                    <li>Пропускате важни срещи и задачи</li>
+                    <li>Един и същи рутинни въпроси от клиенти</li>
+                    <li>Няма време за важните неща</li>
                 </ul>
             </div>
-            <div class="comp-box after">
-                <div class="comp-label">След Social Empire</div>
-                <h3>AI работи за вас 24/7</h3>
-                <ul class="comp-list">
-                    <li>Отговаря на имейлите вместо вас</li>
-                    <li>Организира календара автоматично</li>
-                    <li>Клиентите са обслужени бързо</li>
-                    <li>Вие мислите за стратегията</li>
+            <div class="box after">
+                <h3>След Social Empire</h3>
+                <ul>
+                    <li>AI отговаря на имейлите вместо вас</li>
+                    <li>Календарът се организира сам</li>
+                    <li>Клиентите получават бързи отговори</li>
+                    <li>Фокусирате се върху растежа</li>
                 </ul>
             </div>
         </div>
@@ -551,66 +351,58 @@
 
     <!-- 3. How it works -->
     <section>
-        <div class="section-header">
-            <h2>Как става</h2>
-            <p>Три прости стъпки до вашия AI асистент.</p>
-        </div>
-        
-        <div class="steps-container">
-            <div class="step-card">
+        <h2>Как става</h2>
+        <div class="steps">
+            <div class="step">
                 <div class="step-num">1</div>
-                <h3>Разговаряме</h3>
-                <p>Кажете ни как работите и какво ви бави. Разговорът отнема 20 минути.</p>
+                <div>
+                    <h3>Разговаряме</h3>
+                    <p>Кажете ни как работите и какво ви бави най-много. Отнема 20 минути.</p>
+                </div>
             </div>
-            <div class="step-card">
+            <div class="step">
                 <div class="step-num">2</div>
-                <h3>Настройваме</h3>
-                <p>Свързваме AI-а с вашия имейл, календар и системи. Готово за 14 дни.</p>
+                <div>
+                    <h3>Настройваме</h3>
+                    <p>Свързваме AI-а към вашия имейл, календар и системи. Всичко е готово за 14 дни.</p>
+                </div>
             </div>
-            <div class="step-card">
+            <div class="step">
                 <div class="step-num">3</div>
-                <h3>Работи за вас</h3>
-                <p>AI-ът поема задачите. Вие одобрявате важните решения и следите резултатите.</p>
+                <div>
+                    <h3>Работи за вас</h3>
+                    <p>AI-ът поема рутинните задачи. Вие следите резултатите и одобрявате важните решения.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 4. What you get -->
     <section>
-        <div class="section-header">
-            <h2>Какво получавате</h2>
-            <p>Шест готови модула за различни части от бизнеса.</p>
-        </div>
-        
-        <div class="packs-grid">
-            <div class="pack-card">
-                <div class="pack-num">01</div>
-                <h3>CEO Playbook</h3>
+        <h2>Какво получавате</h2>
+        <div class="packs">
+            <div class="pack">
+                <h4>CEO Playbook</h4>
                 <p>Дневни отчети, приоритизация на задачите и подготовка за важни решения.</p>
             </div>
-            <div class="pack-card">
-                <div class="pack-num">02</div>
-                <h3>COO Operations</h3>
+            <div class="pack">
+                <h4>COO Operations</h4>
                 <p>Автоматични статуси и свързване между различни програми и системи.</p>
             </div>
-            <div class="pack-card">
-                <div class="pack-num">03</div>
-                <h3>Inbox Commander</h3>
+            <div class="pack">
+                <h4>Inbox Commander</h4>
                 <p>Сортира имейлите, пише отговори и напомня за важни съобщения.</p>
             </div>
-            <div class="pack-card">
-                <div class="pack-num">04</div>
-                <h3>Calendar Architect</h3>
+            <div class="pack">
+                <h4>Calendar Architect</h4>
                 <p>Организира срещи, праща напомняния и подготвя документи.</p>
             </div>
-            <div class="pack-card">
-                <div class="pack-num">05</div>
-                <h3>HR Kit</h3>
+            <div class="pack">
+                <h4>HR Kit</h4>
                 <p>Помага с интервютата, кандидатите и новите служители.</p>
             </div>
-            <div class="pack-card">
-                <div class="pack-num">06</div>
-                <h3>Finance Shield</h3>
+            <div class="pack">
+                <h4>Finance Shield</h4>
                 <p>Следи срокове, договори и важни финансови задачи.</p>
             </div>
         </div>
@@ -618,45 +410,36 @@
 
     <!-- 5. Results -->
     <section>
-        <div class="section-header">
-            <h2>Какво казват клиентите</h2>
-            <p>Реални резултати от български бизнеси.</p>
+        <h2>Резултати</h2>
+        <div class="quote">
+            <p>"За две седмици свалихме над 60% от хаоса в имейлите. Вече имаме време за важните неща."</p>
+            <div class="author">Николай Петров</div>
+            <div class="role">Собственик на онлайн магазин, София</div>
         </div>
-        
-        <div class="quotes-container">
-            <div class="quote-card">
-                <p>За две седмици свалихме над 60% от хаоса в имейлите. Вече имаме време за важните неща.</p>
-                <div class="quote-author">Николай Петров</div>
-                <div class="quote-role">Собственик на онлайн магазин, София</div>
-            </div>
-            <div class="quote-card">
-                <p>Спестяваме над 8 часа седмично. AI-ът поема рутината, екипът се фокусира върху растежа.</p>
-                <div class="quote-author">Десислава Иванова</div>
-                <div class="quote-role">Оперативен директор, Пловдив</div>
-            </div>
+        <div class="quote">
+            <p>"Спестяваме над 8 часа седмично. AI-ът поема рутината, екипът се фокусира върху растежа."</p>
+            <div class="author">Десислава Иванова</div>
+            <div class="role">Оперативен директор, Пловдив</div>
         </div>
     </section>
 
     <!-- 6. Contact -->
-    <section class="contact-section" id="contact">
-        <div class="contact-inner">
-            <h2>Готови ли сте?</h2>
-            <p>Разговаряйте с нас и разберете как AI може да помогне на вашия бизнес.</p>
-            
-            <form class="contact-form">
-                <div class="form-row">
-                    <input type="text" placeholder="Вашето име" required>
-                    <input type="email" placeholder="Имейл" required>
-                </div>
-                <input type="tel" placeholder="Телефон">
-                <textarea placeholder="Разкажете ни накратко за бизнеса си"></textarea>
-                <button type="submit" class="btn btn-full">Заявете безплатен разговор</button>
+    <section id="contact">
+        <div class="contact-form">
+            <h2>Готови ли сте да спестите време?</h2>
+            <p>Разговаряйте с нас. Ще ви покажем как точно AI може да помогне на вашия бизнес.</p>
+            <form class="form-fields">
+                <input type="text" placeholder="Вашето име" required>
+                <input type="email" placeholder="Имейл" required>
+                <input type="tel" placeholder="Телефон (незадължително)">
+                <textarea placeholder="Разкажете ни накратко за бизнеса си (незадължително)" rows="3"></textarea>
+                <button type="submit" class="btn">Заявете безплатен разговор</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Social Empire — AI помощник за бизнеса</p>
+        <p>© 2026 Social Empire</p>
     </footer>
 </body>
 </html>
